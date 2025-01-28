@@ -1,0 +1,11 @@
+.p-auth {
+  padding: 96px 0;
+}
+.p-auth_title {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+}
+.p-auth_content {
+  margin-top: 54px;
+}

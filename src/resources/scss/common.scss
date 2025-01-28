@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap");
+
+html {
+    font-family: "Noto Sans JP", "Inter", serif;
+}
+
+.c-header {
+    padding: 15px 25px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &_logo {
+        width: 370px;
+        img {
+            width: 100%;
+        }
+    }
+    &_input {
+        max-width: 500px;
+        width: 50%;
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 24px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+    }
+    &_link {
+        color: #fff;
+        font-size: 24px;
+        margin-right: 9px;
+    }
+    &_btn {
+        background-color: #fff;
+        font-size: 24px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 10px 20px;
+    }
+}
+
+.c-form {
+    &_group {
+        &:not(:first-child) {
+            margin-top: 38px;
+        }
+        &.--image {
+            display: flex;
+            align-items: center;
+        }
+        &_title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+    }
+    &_label {
+        display: block;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 29px;
+    }
+    &_checkbox {
+        font-size: 15px;
+        line-height: 18px;
+        padding: 5px 15px;
+        border: 2px solid #ff5655;
+        color: #ff5655;
+        border-radius: 200px;
+        display: inline-block;
+        margin: 0 19px 36px 0;
+        &es {
+            margin-top: 31px;
+        }
+        &:has(:checked) {
+            background-color: #ff5655;
+            color: #fff;
+        }
+    }
+    &_input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #5f5f5f;
+        border-radius: 5px;
+        margin-top: 5px;
+        &.--price {
+            background: url("../img/mark-en.png") no-repeat left 10px center;
+            padding-left: 30px;
+        }
+    }
+    &_select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #5f5f5f;
+        border-radius: 5px;
+        &-wrap {
+            margin-top: 15px;
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 12px;
+                border-right: 7px solid transparent;
+                border-left: 7px solid transparent;
+                border-top: 12px solid #555;
+                border-bottom: 0;
+            }
+        }
+    }
+    &_buttons {
+        margin-top: 116px;
+        &_link {
+            display: block;
+            margin-top: 36px;
+            text-align: center;
+        }
+        &.--profile {
+            margin-top: 67px;
+        }
+    }
+    &_input-img {
+        display: inline-block;
+        border: 2px solid #ff5555;
+        color: #ff5555;
+        text-align: center;
+        padding: 10px 15px;
+        font-size: 20px;
+        font-weight: 700;
+        border-radius: 5px;
+        margin-left: 40px;
+        & &:hover {
+            cursor: pointer;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        &.--product {
+            margin-left: 0;
+        }
+    }
+    &_inputed-img {
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 100px;
+            object-fit: cover;
+        }
+    }
+    &_product-img {
+        margin-top: 5px;
+        padding: 53px;
+        width: 100%;
+        border: dotted 1px #5f5f5f;
+        text-align: center;
+        border-radius: 4px;
+    }
+    &_block {
+        margin-top: 60px;
+        &_title {
+            font-size: 30px;
+            font-weight: 700;
+            color: #5f5f5f;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #5f5f5f;
+        }
+    }
+}
+
+.c-button {
+    font-size: 26px;
+    line-height: 31px;
+    font-weight: 700;
+    color: #fff;
+    padding: 15px;
+    background-color: #ff5555;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.c-link {
+    color: #0073cc;
+    font-size: 20px;
+}
+
+.l-container {
+    max-width: 680px;
+    margin: auto;
+    width: 90%;
+    &.--item-detail {
+        max-width: 1380px;
+    }
+    &.--purchase {
+        max-width: 1380px;
+    }
+}
+
+.c-product {
+    &_link {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 29px;
+        &:not(:first-child) {
+            margin-left: 100px;
+        }
+        &.--active {
+            color: #ff0000;
+        }
+        &s {
+            display: flex;
+            margin-top: 47px;
+            border-bottom: 2px solid #5f5f5f;
+            padding: 15px 129px;
+        }
+    }
+    &_list {
+        width: 21%;
+        margin-bottom: 76px;
+        &:not(:nth-child(4n + 1)) {
+            margin-left: calc(16% / 3);
+        }
+        &s {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1374px;
+            width: 90%;
+            margin: 76px auto auto;
+        }
+        &_img {
+            width: 100%;
+            img {
+                width: 100%;
+                object-fit: cover;
+                height: auto;
+            }
+        }
+    }
+}

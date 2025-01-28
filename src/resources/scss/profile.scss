@@ -1,0 +1,44 @@
+.p-profile {
+    padding: 60px 0;
+    &_title {
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+    }
+    &_content {
+        margin-top: 47px;
+    }
+    &-index {
+        &_contents {
+            max-width: 1017px;
+            width: 90%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 78px;
+        }
+        &_info {
+            display: flex;
+            align-items: center;
+        }
+        &_img {
+            width: 150px;
+            height: 150px;
+            border-radius: 150px;
+            object-fit: cover;
+        }
+        &_name {
+            margin-left: 60px;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        &_link {
+            color: #ff5555;
+            border: 2px solid #ff5555;
+            padding: 14px 40px;
+            font-size: 26px;
+            border-radius: 10px;
+        }
+    }
+}

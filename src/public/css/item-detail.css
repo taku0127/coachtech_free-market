@@ -1,0 +1,133 @@
+.p-item-detail {
+  padding: 100px 0;
+  display: flex;
+}
+.p-item-detail_img {
+  width: 50%;
+  padding: 36px 45px 0;
+}
+.p-item-detail_img img {
+  width: 100%;
+}
+.p-item-detail_content {
+  width: 50%;
+  padding: 0 60px;
+}
+.p-item-detail_title {
+  font-size: 45px;
+  font-weight: 700;
+}
+.p-item-detail_title span {
+  font-size: 20px;
+}
+.p-item-detail_price {
+  font-size: 30px;
+  margin-top: 28px;
+}
+.p-item-detail_price span {
+  font-size: 45px;
+}
+.p-item-detail_icon {
+  text-align: center;
+}
+.p-item-detail_icon:not(:first-child) {
+  margin-left: 45px;
+}
+.p-item-detail_icons {
+  display: flex;
+  margin: 28px 0 0 45px;
+}
+.p-item-detail_icon_count {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+.p-item-detail_buy-btn {
+  margin-top: 20px;
+}
+.p-item-detail_content_title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 40px;
+}
+.p-item-detail_description {
+  margin-top: 28px;
+  font-size: 24px;
+  line-height: 1.5;
+}
+.p-item-detail_info {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.p-item-detail_info_title {
+  font-size: 24px;
+  font-weight: 700;
+}
+.p-item-detail_info_content {
+  margin-left: 60px;
+  font-size: 20px;
+}
+.p-item-detail_info_content.--category {
+  display: flex;
+}
+.p-item-detail_info_category {
+  padding: 3px 30px;
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  margin-right: 22px;
+}
+.p-item-detail_info_status {
+  padding: 3px 30px;
+}
+.p-item-detail_comment {
+  margin-top: 50px;
+}
+.p-item-detail_comment_title {
+  font-size: 36px;
+  color: #5f5f5f;
+  font-weight: 700;
+}
+.p-item-detail_comment_contents {
+  margin-top: 20px;
+}
+.p-item-detail_comment_user {
+  display: flex;
+  align-items: center;
+}
+.p-item-detail_comment_user_img img {
+  width: 70px;
+  height: 70px;
+  border-radius: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.p-item-detail_comment_user_name {
+  margin-left: 18px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.p-item-detail_comment_detail {
+  font-size: 20px;
+  background-color: #e5e5e5;
+  padding: 30px 15px;
+  margin-top: 19px;
+  border-radius: 5px;
+}
+.p-item-detail_comment_input {
+  margin-top: 40px;
+}
+.p-item-detail_comment_input_title {
+  font-size: 28px;
+  font-weight: 700;
+}
+.p-item-detail_comment_input_textarea {
+  height: 246px;
+  border: 1px solid #585858;
+  width: 100%;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.p-item-detail_comment_submit {
+  margin-top: 40px;
+}
