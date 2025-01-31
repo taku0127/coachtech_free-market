@@ -32,6 +32,10 @@ html {
   font-size: 24px;
   margin-right: 9px;
 }
+.c-header_links {
+  display: flex;
+  align-items: center;
+}
 .c-header_btn {
   background-color: #fff;
   font-size: 24px;

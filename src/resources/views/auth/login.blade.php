@@ -9,12 +9,12 @@
         <h1 class="p-auth_title">
             ログイン
         </h1>
-        <form action="">
+        <form action="/login" method="POST">
             @csrf
             <div class="c-form p-auth_content">
                 <div class="c-form_group">
-                    <label for="name" class="c-form_label">ユーザー名 / メールアドレス</label>
-                    <input type="text" id="name" name="name" class="c-form_input">
+                    <label for="email" class="c-form_label">ユーザー名 / メールアドレス</label>
+                    <input type="text" id="email" name="email" class="c-form_input">
                 </div>
                 <div class="c-form_group">
                     <label for="password" class="c-form_label">パスワード</label>

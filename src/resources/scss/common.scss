@@ -31,6 +31,10 @@ html {
         color: #fff;
         font-size: 24px;
         margin-right: 9px;
+        &s {
+            display: flex;
+            align-items: center;
+        }
     }
     &_btn {
         background-color: #fff;
