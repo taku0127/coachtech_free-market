@@ -34,18 +34,22 @@
                     <label for="password" class="c-form_label">パスワード</label>
                     <input type="password" id="password" name="password" class="c-form_input">
                     @error('password')
+                    @if ($message != 'パスワードと一致しません')
                     <p class="c-form_error">
                         {{ $message }}
                     </p>
+                    @endif
                     @enderror
                 </div>
                 <div class="c-form_group">
                     <label for="password_confirmation" class="c-form_label">確認用パスワード </label>
                     <input type="password" id="password_confirmation" name="password_confirmation" class="c-form_input">
-                    @error('password_confirmation')
+                    @error('password')
+                    @if ($message == 'パスワードと一致しません')
                     <p class="c-form_error">
                         {{ $message }}
                     </p>
+                    @endif
                     @enderror
                 </div>
                 <div class="c-form_buttons">

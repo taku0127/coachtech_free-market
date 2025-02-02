@@ -15,14 +15,24 @@
                 <div class="c-form_group">
                     <label for="email" class="c-form_label">ユーザー名 / メールアドレス</label>
                     <input type="text" id="email" name="email" class="c-form_input">
+                    @error('email')
+                    <p class="c-form_error">
+                        {{ $message }}
+                    </p>
+                    @enderror
                 </div>
                 <div class="c-form_group">
                     <label for="password" class="c-form_label">パスワード</label>
                     <input type="password" id="password" name="password" class="c-form_input">
+                    @error('password')
+                    <p class="c-form_error">
+                        {{ $message }}
+                    </p>
+                    @enderror
                 </div>
                 <div class="c-form_buttons">
                     <button type="submit" class="c-button">ログインする</button>
-                    <a href="" class="c-link c-form_buttons_link">会員登録はこちら</a>
+                    <a href="/register" class="c-link c-form_buttons_link">会員登録はこちら</a>
                 </div>
             </div>
         </form>

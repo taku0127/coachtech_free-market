@@ -15,10 +15,10 @@ class AddColumnToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('postcode',8);
-            $table->string('address');
-            $table->string('building');
-            $table->string('image');
+            $table->string('postcode',8)->nullable();
+            $table->string('address')->nullable();
+            $table->string('building')->nullable();
+            $table->string('image')->nullable();
         });
     }
 
