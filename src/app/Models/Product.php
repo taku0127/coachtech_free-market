@@ -17,4 +17,12 @@ class Product extends Model
     public function categories(){
         return $this->belongsToMany(Category::class);
     }
+
+    public function comments(){
+        return $this->belongsToMany(User::class, 'comments')->withPivot('comment');
+    }
+
+    public function status() {
+        return $this->belongsTo(Status::class);
+    }
 }
