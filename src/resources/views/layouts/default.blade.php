@@ -18,12 +18,17 @@
         @if (!Request::is('login','register'))
         <div class="c-header_input"><input type="text" placeholder="なにをお探しですか"></div>
         <div class="c-header_links">
+            @auth
             <form class="form" action="/logout" method="post">
                 @csrf
                 <button class="c-header_link">ログアウト</button>
             </form>
-            <a href="" class="c-header_link">マイページ</a>
-            <a href="" class="c-header_btn">出品</a>
+            @endauth
+            @guest
+                <a href="/login" class="c-header_link">ログイン</a>
+            @endguest
+            <a href="/mypage" class="c-header_link">マイページ</a>
+            <a href="/sell" class="c-header_btn">出品</a>
         </div>
         @endif
     </header>
