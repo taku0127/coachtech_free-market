@@ -10,7 +10,7 @@
             <div class="p-profile-index_img"><img src="{{ asset('img/dummy.png')}}" alt=""></div>
             <p class="p-profile-index_name">ユーザー名</p>
         </div>
-        <a href="　" class="p-profile-index_link">プロフィールを編集</a>
+        <a href="/mypage/profile" class="p-profile-index_link">プロフィールを編集</a>
     </div>
     <div class="c-product p-profile-index_product">
         <div class="c-product_links">
