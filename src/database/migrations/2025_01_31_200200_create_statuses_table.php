@@ -28,6 +28,6 @@ class CreateStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cotegory_statuses');
+        Schema::dropIfExists('statuses');
     }
 }
