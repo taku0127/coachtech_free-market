@@ -32,6 +32,4 @@ Route::middleware('auth')->group(function () {
         return view('shipment');
     });
 });
-Route::get('/item/{item}', function () {
-    return view('detail');
-});
+Route::get('/item/{item}', [ProductListController::class,'detail']);

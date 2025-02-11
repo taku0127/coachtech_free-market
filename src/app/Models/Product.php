@@ -11,7 +11,7 @@ class Product extends Model
     protected $fillable = ['user_id', 'image', 'name','brand','status_id' ,'description', 'price', 'is_sold'];
 
     public function likes() {
-        $this->belongsToMany(User::class, 'likes');
+        return $this->belongsToMany(User::class, 'likes');
     }
 
     public function categories(){
