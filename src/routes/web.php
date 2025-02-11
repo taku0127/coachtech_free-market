@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [ProductListController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/mypage', function () {

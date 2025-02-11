@@ -3,34 +3,21 @@
 @section('content')
 <div class="c-product">
     <div class="c-product_links">
-        <a href="" class="c-product_link">おすすめ</a>
-        <a href="" class="c-product_link --active">マイリスト</a>
+        <a href="" class="c-product_link --active">おすすめ</a>
+        <a href="" class="c-product_link">マイリスト</a>
     </div>
     <ul class="c-product_lists">
-        <li class="c-product_list"><a href="">
-            <div class="c-product_list_img"><img src="{{ asset('img/dummy-product.png') }}" alt=""></div>
-            <p class="c-product_list_name">商品名</p>
+        @foreach ($products as $product)
+        <li class="c-product_list"><a href="/item/{{ $product->id }}">
+            <div class="c-product_list_img">
+                <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
+                @if ($product->is_sold)
+                    <p class="c-product_list_img_sold">Sold</p>
+                @endif
+            </div>
+            <p class="c-product_list_name">{{ $product->name; }}</p>
         </a></li>
-        <li class="c-product_list"><a href="">
-            <div class="c-product_list_img"><img src="{{ asset('img/dummy-product.png') }}" alt=""></div>
-            <p class="c-product_list_name">商品名</p>
-        </a></li>
-        <li class="c-product_list"><a href="">
-            <div class="c-product_list_img"><img src="{{ asset('img/dummy-product.png') }}" alt=""></div>
-            <p class="c-product_list_name">商品名</p>
-        </a></li>
-        <li class="c-product_list"><a href="">
-            <div class="c-product_list_img"><img src="{{ asset('img/dummy-product.png') }}" alt=""></div>
-            <p class="c-product_list_name">商品名</p>
-        </a></li>
-        <li class="c-product_list"><a href="">
-            <div class="c-product_list_img"><img src="{{ asset('img/dummy-product.png') }}" alt=""></div>
-            <p class="c-product_list_name">商品名</p>
-        </a></li>
-        <li class="c-product_list"><a href="">
-            <div class="c-product_list_img"><img src="{{ asset('img/dummy-product.png') }}" alt=""></div>
-            <p class="c-product_list_name">商品名</p>
-        </a></li>
+        @endforeach
     </ul>
 </div>
 @endsection

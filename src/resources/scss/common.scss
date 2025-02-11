@@ -236,10 +236,26 @@ html {
         }
         &_img {
             width: 100%;
+            position: relative;
             img {
                 width: 100%;
                 object-fit: cover;
                 height: auto;
+            }
+            &_sold {
+                font-weight: bold;
+                font-size: 50px;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                color: rgb(202, 0, 0);
+                margin: auto;
+                background-color: #0000002f;
             }
         }
     }

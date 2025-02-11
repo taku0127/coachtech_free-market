@@ -230,10 +230,26 @@ html {
 }
 .c-product_list_img {
   width: 100%;
+  position: relative;
 }
 .c-product_list_img img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   height: auto;
+}
+.c-product_list_img_sold {
+  font-weight: bold;
+  font-size: 50px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: rgb(202, 0, 0);
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.1843137255);
 }
