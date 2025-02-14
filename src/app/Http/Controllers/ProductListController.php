@@ -19,7 +19,21 @@ class ProductListController extends Controller
     }
 
     public function detail($id) {
+        $user_id = Auth::check() ? Auth::id() : null;
         $product = Product::with('categories')->find($id);
-        return view('detail', compact('product'));
+        $is_like = $user_id ? $product->likes()->where('user_id' , $user_id)->exists() : false;
+        return view('detail', compact('product','is_like'));
+    }
+
+    public function like(Request $request){
+        $product_id = $request->input('product_id');
+        $product = Product::find($product_id);
+        $user_id = Auth::id();
+        if(!$product->likes()->where('user_id',$user_id)->exists()){
+            $product->likes()->attach($user_id);
+        }else{
+            $product->likes()->detach($user_id);
+        }
+        return redirect('item/'.$product_id);
     }
 }

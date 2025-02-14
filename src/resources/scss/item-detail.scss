@@ -43,6 +43,16 @@
             font-weight: 700;
             margin-top: 5px;
         }
+        &_img {
+            &.--active {
+                filter: brightness(0) saturate(100%) invert(98%) sepia(65%)
+                    saturate(6068%) hue-rotate(360deg) brightness(76%)
+                    contrast(102%);
+            }
+            &.--noClick {
+                pointer-events: none;
+            }
+        }
     }
     &_buy-btn {
         margin-top: 20px;

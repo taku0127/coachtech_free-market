@@ -33,3 +33,4 @@ Route::middleware('auth')->group(function () {
     });
 });
 Route::get('/item/{item}', [ProductListController::class,'detail']);
+Route::post('/like' ,[ProductListController::class,'like']);

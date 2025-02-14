@@ -19,9 +19,13 @@
             <p class="p-item-detail_price">¥<span>{{ number_format($product->price) }}</span> (税込)</p>
             <div class="p-item-detail_icons">
                 <div class="p-item-detail_icon">
-                    <div class="p-item-detail_icon_img">
-                        <img src="{{ asset('img/icon-star.png') }}" alt="">
-                    </div>
+                    <form action="/like" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button class="p-item-detail_icon_img{{ $is_like ? ' --active' : '' }}{{ Auth::check() ? '' : ' --noClick' }}">
+                            <img src="{{ asset('img/icon-star.png') }}" alt="">
+                        </button>
+                    </form>
                     <div class="p-item-detail_icon_count">{{ $product->likes->count() }}</div>
                 </div>
                 <div class="p-item-detail_icon">

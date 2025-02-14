@@ -45,6 +45,12 @@
   font-weight: 700;
   margin-top: 5px;
 }
+.p-item-detail_icon_img.--active {
+  filter: brightness(0) saturate(100%) invert(98%) sepia(65%) saturate(6068%) hue-rotate(360deg) brightness(76%) contrast(102%);
+}
+.p-item-detail_icon_img.--noClick {
+  pointer-events: none;
+}
 .p-item-detail_buy-btn {
   margin-top: 20px;
 }
