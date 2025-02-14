@@ -9,11 +9,22 @@ use Illuminate\Support\Facades\Auth;
 class ProductListController extends Controller
 {
     //
-    public function index() {
+    public function index(Request $request) {
         $user_id = Auth::check() ? Auth::id() : null;
+        $query_page = $request->query('page');
+        $query_search = $request->query('search');
 
-        $products = Product::when($user_id,function ($query) use($user_id){
+        $products = Product::when($user_id,function ($query) use($user_id,$query_page){
+            if($query_page == 'mylist'){
+                $query->whereHas('likes',function ($q)use($user_id){
+                    return $q->where('user_id', $user_id);
+                });
+            }
             return $query->where('user_id', '!=', $user_id);
+        })->when(!$user_id && $query_page == 'mylist', function($query){
+            return $query->whereRaw('0=1');
+        })->when($query_search,function($query)use($query_search){
+            return $query->KeywordSearch($query_search);
         })->get();
         return view('index',compact('products'));
     }

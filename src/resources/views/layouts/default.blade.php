@@ -13,10 +13,16 @@
 <body>
     <header class="c-header">
         <p class="c-header_logo">
-            <img src="{{ asset('img/logo.svg') }}" alt="">
+            <a href="/"><img src="{{ asset('img/logo.svg') }}" alt=""></a>
         </p>
         @if (!Request::is('login','register'))
-        <div class="c-header_input"><input type="text" placeholder="なにをお探しですか"></div>
+        <form action="/" method="get">
+            @csrf
+            <div class="c-header_input"><input type="text" placeholder="なにをお探しですか" name="search"></div>
+            @if (request()->query('page') == 'mylist')
+                <input type="hidden" value="mylist" name="page">
+            @endif
+        </form>
         <div class="c-header_links">
             @auth
             <form class="form" action="/logout" method="post">
