@@ -31,7 +31,7 @@ class ProductListController extends Controller
 
     public function detail($id) {
         $user_id = Auth::check() ? Auth::id() : null;
-        $product = Product::with('categories')->find($id);
+        $product = Product::with(['comments.user','categories'])->find($id);
         $is_like = $user_id ? $product->likes()->where('user_id' , $user_id)->exists() : false;
         return view('detail', compact('product','is_like'));
     }

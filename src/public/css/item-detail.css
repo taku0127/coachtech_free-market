@@ -142,6 +142,12 @@
   width: 100%;
   margin-top: 5px;
   border-radius: 5px;
+  padding: 10px;
+}
+.p-item-detail_comment_input_error {
+  color: #ff0000;
+  font-size: 16px;
+  margin-top: 5px;
 }
 .p-item-detail_comment_submit {
   margin-top: 40px;

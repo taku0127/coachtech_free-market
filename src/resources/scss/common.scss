@@ -171,6 +171,11 @@ html {
             border-bottom: 1px solid #5f5f5f;
         }
     }
+    &_error {
+        color: #ff0000;
+        font-size: 16px;
+        margin-top: 5px;
+    }
 }
 
 .c-button {

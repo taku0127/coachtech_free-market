@@ -35,7 +35,7 @@
                     <div class="p-item-detail_icon_count">{{ $product->comments->count() }}</div>
                 </div>
             </div>
-            <div class="p-item-detail_buy-btn"><p class="c-button">購入手続きへ</p></div>
+            <div class="p-item-detail_buy-btn"><a class="c-button" href="/purchase/{{ $product->id }}">購入手続きへ</a></div>
             <h2 class="p-item-detail_content_title">商品説明</h2>
             <p class="p-item-detail_description">{!! nl2br(e($product->description)) !!}
             </p>
@@ -62,18 +62,24 @@
                     @foreach ($product->comments as $comment)
                     <div class="p-item-detail_comment_content">
                         <div class="p-item-detail_comment_user">
-                            <div class="p-item-detail_comment_user_img"><img src="{{ asset('storage/profile/'.$comment->image) }}" alt=""></div>
-                            <p class="p-item-detail_comment_user_name">{{ $comment->name }}</p>
+                            <div class="p-item-detail_comment_user_img"><img src="{{ asset('storage/profile/'.$comment->user->image) }}" alt=""></div>
+                            <p class="p-item-detail_comment_user_name">{{ $comment->user->name }}</p>
                         </div>
-                        <p class="p-item-detail_comment_detail">{{ $comment->pivot->comment }}</p>
+                        <p class="p-item-detail_comment_detail">{{ $comment->comment }}</p>
                     </div>
                     @endforeach
                 </div>
-                <div class="p-item-detail_comment_input">
-                    <p class="p-item-detail_comment_input_title">商品へのコメント</p>
-                    <textarea name="" class="p-item-detail_comment_input_textarea" id="" cols="30" rows="10"></textarea>
-                </div>
-                <div class="p-item-detail_comment_submit"><p class="c-button">コメントする</p></div>
+                <form action="/comment/{{ $product->id }}" method="POST">
+                    @csrf
+                    <div class="p-item-detail_comment_input">
+                        <p class="p-item-detail_comment_input_title">商品へのコメント</p>
+                        <textarea name="comment" class="p-item-detail_comment_input_textarea" id="" cols="30" rows="10"></textarea>
+                        @error('comment')
+                        <p class="p-item-detail_comment_input_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="p-item-detail_comment_submit"><button class="c-button">コメントする</button></div>
+                </form>
             </div>
         </div>
     </div>

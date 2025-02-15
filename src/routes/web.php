@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase/address/{item}', function () {
         return view('shipment');
     });
+    Route::post('/comment/{id}', [CommentController::class,'store']);
 });
 Route::get('/item/{item}', [ProductListController::class,'detail']);
 Route::post('/like' ,[ProductListController::class,'like']);
