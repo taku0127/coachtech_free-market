@@ -3,7 +3,7 @@ window.onload = function () {
     const preview = document.querySelector(".js-preview");
     const preview_background = document.querySelector(".js-preview-background");
 
-    input.addEventListener("change", (event) => {
+    input?.addEventListener("change", (event) => {
         // <1>
         const [file] = event.target.files;
         if (preview) {
@@ -18,4 +18,14 @@ window.onload = function () {
             )}) center center / contain no-repeat`;
         }
     });
+    changePaymentText();
+    document
+        .querySelector(".js-selectPayment")
+        ?.addEventListener("change", changePaymentText);
+    function changePaymentText() {
+        console.log("changePaymentText");
+        const paymentMethod = document.querySelector(".js-selectPayment").value;
+        document.querySelector(".js-selectPayment_text").textContent =
+            paymentMethod ? paymentMethod : "選択してください";
+    }
 };

@@ -17,7 +17,7 @@
             <div class="p-purchase_select-payment">
                 <p class="p-purchase_select-payment_title">支払い方法</p>
                 <div class="p-purchase_select-payment_select-wrap">
-                    <select name="payment" id="" class="p-purchase_select-payment_select">
+                    <select name="payment" id="" class="p-purchase_select-payment_select js-selectPayment">
                         <option value="">選択してください</option>
                         <option value="コンビニ払い">コンビニ払い</option>
                         <option value="カード支払い">カード支払い</option>
@@ -43,7 +43,7 @@
             </div>
             <div class="p-purchase_buy_block">
                 <p class="p-purchase_buy_title">支払い方法</p>
-                <p class="p-purchase_buy_content">コンビニ払い</p>
+                <p class="p-purchase_buy_content js-selectPayment_text">選択してください</p>
             </div>
             <div class="p-purchase_buy_link"><button class="c-button">購入する</button></div>
         </div>
