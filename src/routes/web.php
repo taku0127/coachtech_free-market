@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\SellController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,9 +25,8 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/mypage/profile', [ProfileController::class, 'index']);
     Route::patch('/mypage/profile', [ProfileController::class, 'update']);
-    Route::get('/sell', function () {
-        return view('sell');
-    });
+    Route::get('/sell', [SellController::class, 'index']);
+    Route::post('/sell', [SellController::class, 'store']);
     Route::get('/purchase/{item}', [PurchaseController::class , 'index']);
     Route::post('/purchase/{item}', [PurchaseController::class , 'store']);
     Route::get('/purchase/address/{item}', [PurchaseController::class , 'changeAddress']);
