@@ -27,7 +27,7 @@
             <div class="p-purchase_shipment">
                 <div class="p-purchase_shipment_title-block">
                     <p class="p-purchase_shipment_title">配送先</p>
-                    <a href="" class="p-purchase_shipment_link">変更する</a>
+                    <a href="/purchase/address/{{ $product->id }}" class="p-purchase_shipment_link">変更する</a>
                 </div>
                 <p class="p-purchase_shipment_address">
                     {{ $address['postcode'] }}<br>
