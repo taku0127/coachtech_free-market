@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/sell', function () {
         return view('sell');
     });
-    Route::get('/purchase/{item}', function () {
-        return view('purchase');
-    });
+    Route::get('/purchase/{item}', [PurchaseController::class , 'index']);
     Route::get('/purchase/address/{item}', function () {
         return view('shipment');
     });

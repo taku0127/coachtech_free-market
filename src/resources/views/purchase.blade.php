@@ -8,10 +8,10 @@
     <div class="p-purchase">
         <div class="p-purchase_detail">
             <div class="p-purchase_item">
-                <div class="p-purchase_item_img"><img src="{{ asset('img/dummy-product.png') }}" alt=""></div>
+                <div class="p-purchase_item_img"><img src="{{ asset('storage/products/'.$product->image) }}" alt=""></div>
                 <div class="p-purchase_item_detail">
-                    <p class="p-purchase_item_title">商品名</p>
-                    <p class="p-purchase_item_price">¥ 47,000</p>
+                    <p class="p-purchase_item_title">{{ $product->name }}</p>
+                    <p class="p-purchase_item_price">¥ {{ number_format($product->price) }}</p>
                 </div>
             </div>
             <div class="p-purchase_select-payment">
@@ -30,15 +30,16 @@
                     <a href="" class="p-purchase_shipment_link">変更する</a>
                 </div>
                 <p class="p-purchase_shipment_address">
-                    〒 XXX-YYYY<br>
-                    ここには住所と建物が入ります
+                    {{ $address['postcode'] }}<br>
+                    {{ $address['address'] }}<br>
+                    {{ $address['building'] }}
                 </p>
             </div>
         </div>
         <div class="p-purchase_buy">
             <div class="p-purchase_buy_block">
                 <p class="p-purchase_buy_title">商品代金</p>
-                <p class="p-purchase_buy_content">¥ 47,000</p>
+                <p class="p-purchase_buy_content">¥ {{ number_format($product->price) }}</p>
             </div>
             <div class="p-purchase_buy_block">
                 <p class="p-purchase_buy_title">支払い方法</p>
