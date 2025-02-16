@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
         return view('sell');
     });
     Route::get('/purchase/{item}', [PurchaseController::class , 'index']);
+    Route::post('/purchase/{item}', [PurchaseController::class , 'store']);
     Route::get('/purchase/address/{item}', [PurchaseController::class , 'changeAddress']);
     Route::post('/purchase/address/{item}' ,[PurchaseController::class,'storeAddress']);
     Route::post('/comment/{id}', [CommentController::class,'store']);

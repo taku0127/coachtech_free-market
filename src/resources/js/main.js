@@ -18,14 +18,15 @@ window.onload = function () {
             )}) center center / contain no-repeat`;
         }
     });
-    changePaymentText();
-    document
-        .querySelector(".js-selectPayment")
-        ?.addEventListener("change", changePaymentText);
+    const payment_method_select = document.querySelector(".js-selectPayment");
+    payment_method_select?.addEventListener("change", changePaymentText);
     function changePaymentText() {
-        console.log("changePaymentText");
-        const paymentMethod = document.querySelector(".js-selectPayment").value;
+        var payment_method_select_text =
+            payment_method_select.options[payment_method_select.selectedIndex]
+                .text;
         document.querySelector(".js-selectPayment_text").textContent =
-            paymentMethod ? paymentMethod : "選択してください";
+            payment_method_select_text
+                ? payment_method_select_text
+                : "選択してください";
     }
 };

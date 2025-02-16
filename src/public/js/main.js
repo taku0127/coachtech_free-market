@@ -9,7 +9,6 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 window.onload = function () {
-  var _document$querySelect;
   var input = document.querySelector(".js-input_img");
   var preview = document.querySelector(".js-preview");
   var preview_background = document.querySelector(".js-preview-background");
@@ -27,12 +26,11 @@ window.onload = function () {
       preview_background.style.background = "url(".concat(URL.createObjectURL(file), ") center center / contain no-repeat");
     }
   });
-  changePaymentText();
-  (_document$querySelect = document.querySelector(".js-selectPayment")) === null || _document$querySelect === void 0 || _document$querySelect.addEventListener("change", changePaymentText);
+  var payment_method_select = document.querySelector(".js-selectPayment");
+  payment_method_select === null || payment_method_select === void 0 || payment_method_select.addEventListener("change", changePaymentText);
   function changePaymentText() {
-    console.log("changePaymentText");
-    var paymentMethod = document.querySelector(".js-selectPayment").value;
-    document.querySelector(".js-selectPayment_text").textContent = paymentMethod ? paymentMethod : "選択してください";
+    var payment_method_select_text = payment_method_select.options[payment_method_select.selectedIndex].text;
+    document.querySelector(".js-selectPayment_text").textContent = payment_method_select_text ? payment_method_select_text : "選択してください";
   }
 };
 /******/ })()
