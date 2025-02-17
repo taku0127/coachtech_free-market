@@ -20,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProductListController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/mypage', function () {
-        return view('profile.index');
-    });
+    Route::get('/mypage', [ProductListController::class,'mypage']);
     Route::get('/mypage/profile', [ProfileController::class, 'index']);
     Route::patch('/mypage/profile', [ProfileController::class, 'update']);
     Route::get('/sell', [SellController::class, 'index']);

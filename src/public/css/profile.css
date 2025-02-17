@@ -29,6 +29,13 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
+.p-profile-index_img img {
+  border-radius: 150px;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .p-profile-index_name {
   margin-left: 60px;
   font-size: 36px;

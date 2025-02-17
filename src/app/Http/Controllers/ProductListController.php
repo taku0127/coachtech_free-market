@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,5 +47,17 @@ class ProductListController extends Controller
             $product->likes()->detach($user_id);
         }
         return redirect('item/'.$product_id);
+    }
+
+    public function mypage(Request $request){
+        $query_tab = $request->query('tab');
+        $user = Auth::user();
+        $products = null;
+        if($query_tab == 'sell' || $query_tab == null){
+            $products = Product::where('user_id', $user->id)->get();;
+        } elseif($query_tab == 'buy') {
+            $products = Order::where('user_id', $user->id)->with('product')->get()->pluck('product');
+        };
+        return view('profile.index',compact('products','user'));
     }
 }
