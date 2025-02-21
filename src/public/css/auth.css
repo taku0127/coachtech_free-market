@@ -1,11 +1,35 @@
 .p-auth {
   padding: 96px 0;
 }
+.p-auth.--emailVarify {
+  padding: 237px 0;
+  width: 720px;
+  margin: auto;
+}
+.p-auth.--emailVarify .p-auth_title {
+  font-size: 24px;
+}
 .p-auth_title {
   font-size: 36px;
   font-weight: 700;
   text-align: center;
 }
+.p-auth_link {
+  font-size: 24px;
+  padding: 22px 33px;
+  background-color: #d9d9d9;
+  border: 1px solid #000;
+  display: inline-block;
+  margin: 62px auto 0;
+  border-radius: 5px;
+}
+.p-auth_linkBlock {
+  text-align: center;
+}
 .p-auth_content {
   margin-top: 54px;
+}
+.p-auth_button {
+  text-align: center;
+  margin-top: 52px;
 }
