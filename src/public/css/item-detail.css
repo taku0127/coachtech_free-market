@@ -2,9 +2,20 @@
   padding: 100px 0;
   display: flex;
 }
+@media screen and (max-width: 850px) {
+  .p-item-detail {
+    display: block;
+  }
+}
 .p-item-detail_img {
   width: 50%;
   padding: 36px 45px 0;
+}
+@media screen and (max-width: 850px) {
+  .p-item-detail_img {
+    width: 100%;
+    padding: 0;
+  }
 }
 .p-item-detail_img_wrap {
   position: relative;
@@ -15,6 +26,13 @@
 .p-item-detail_content {
   width: 50%;
   padding: 0 60px;
+}
+@media screen and (max-width: 850px) {
+  .p-item-detail_content {
+    width: 100%;
+    padding: 0;
+    margin-top: 20px;
+  }
 }
 .p-item-detail_title {
   font-size: 45px;

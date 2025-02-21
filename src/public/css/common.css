@@ -10,6 +10,22 @@ html {
   align-items: center;
   justify-content: space-between;
 }
+@media screen and (max-width: 850px) {
+  .c-header {
+    display: block;
+  }
+}
+.c-header_block {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+}
+@media screen and (max-width: 850px) {
+  .c-header_block {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
 .c-header_logo {
   width: 370px;
 }
@@ -18,7 +34,7 @@ html {
 }
 .c-header_input {
   max-width: 500px;
-  width: 50%;
+  width: 100%;
 }
 .c-header_input input {
   width: 100%;
@@ -150,7 +166,7 @@ html {
 }
 .c-form_product-img {
   margin-top: 5px;
-  padding: 53px;
+  padding: 200px;
   width: 100%;
   border: dotted 1px #5f5f5f;
   text-align: center;

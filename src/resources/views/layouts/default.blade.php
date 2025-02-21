@@ -16,25 +16,27 @@
             <a href="/"><img src="{{ asset('img/logo.svg') }}" alt=""></a>
         </p>
         @if (!Request::is('login','register'))
-        <form action="/" method="get">
-            @csrf
-            <div class="c-header_input"><input type="text" placeholder="なにをお探しですか" name="search"></div>
-            @if (request()->query('page') == 'mylist')
-                <input type="hidden" value="mylist" name="page">
-            @endif
-        </form>
-        <div class="c-header_links">
-            @auth
-            <form class="form" action="/logout" method="post">
+        <div class="c-header_block">
+            <form action="/" method="get">
                 @csrf
-                <button class="c-header_link">ログアウト</button>
+                <div class="c-header_input"><input type="text" placeholder="なにをお探しですか" name="search"></div>
+                @if (request()->query('page') == 'mylist')
+                    <input type="hidden" value="mylist" name="page">
+                @endif
             </form>
-            @endauth
-            @guest
-                <a href="/login" class="c-header_link">ログイン</a>
-            @endguest
-            <a href="/mypage" class="c-header_link">マイページ</a>
-            <a href="/sell" class="c-header_btn">出品</a>
+            <div class="c-header_links">
+                @auth
+                <form class="form" action="/logout" method="post">
+                    @csrf
+                    <button class="c-header_link">ログアウト</button>
+                </form>
+                @endauth
+                @guest
+                    <a href="/login" class="c-header_link">ログイン</a>
+                @endguest
+                <a href="/mypage" class="c-header_link">マイページ</a>
+                <a href="/sell" class="c-header_btn">出品</a>
+            </div>
         </div>
         @endif
     </header>

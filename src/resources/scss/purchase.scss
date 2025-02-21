@@ -1,7 +1,12 @@
+@use "forward" as *;
+
 .p-purchase {
     display: flex;
     justify-content: space-between;
-    margin-top: 93px;
+    margin: 93px 0 50px;
+    @include tabView {
+        display: block;
+    }
     &_detail {
         max-width: 805px;
         width: 100%;
@@ -31,6 +36,10 @@
     &_buy {
         max-width: 440px;
         width: 100%;
+        @include tabView {
+            max-width: inherit;
+            margin-top: 30px;
+        }
     }
     &_select-payment {
         padding: 50px 35px;
