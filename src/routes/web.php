@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [ProductListController::class, 'index']);
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','verified'])->group(function () {
     Route::get('/mypage', [ProductListController::class,'mypage']);
     Route::get('/mypage/profile', [ProfileController::class, 'index']);
     Route::patch('/mypage/profile', [ProfileController::class, 'update']);
