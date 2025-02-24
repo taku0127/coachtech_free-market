@@ -13,6 +13,10 @@ class ProfileController extends Controller
     //
     public function index(){
         $user = Auth::user();
+        if(session()->has('logged_in') && session('logged_in') === true){
+            session()->forget('logged_in');
+            return redirect('/');
+        }
         return view('profile.setting', compact('user'));
     }
 

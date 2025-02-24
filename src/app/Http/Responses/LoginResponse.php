@@ -8,6 +8,7 @@ class LoginResponse implements LoginResponseContract
 {
     public function toResponse($request)
     {
-        return redirect('/?page=mylist'); // ログイン後のリダイレクト先を変更
+        session(['logged_in' => true]);
+        return redirect('/'); // ログイン後のリダイレクト先を変更
     }
 }
