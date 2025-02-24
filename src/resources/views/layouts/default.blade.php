@@ -15,7 +15,7 @@
         <p class="c-header_logo">
             <a href="/"><img src="{{ asset('img/logo.svg') }}" alt=""></a>
         </p>
-        @if (!Request::is('login','register'))
+        @if (!Request::is('login','register','email/verify'))
         <div class="c-header_block">
             <form action="/" method="get">
                 @csrf
