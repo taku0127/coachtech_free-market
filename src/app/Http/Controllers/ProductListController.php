@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,9 +13,15 @@ class ProductListController extends Controller
     //
     public function index(Request $request) {
         $user_id = Auth::check() ? Auth::id() : null;
+        if($user_id) {
+            $user = User::find($user_id);
+        }
         $query_page = $request->query('page');
         $query_search = $request->query('search');
-
+        if($user_id && $user->email_verified_at == null) {
+            $user->sendEmailVerificationNotification();
+            return redirect('/email/verify');
+        }
         $products = Product::when($user_id,function ($query) use($user_id,$query_page){
             if($query_page == 'mylist'){
                 $query->whereHas('likes',function ($q)use($user_id){
