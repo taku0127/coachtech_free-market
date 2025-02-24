@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/purchase/address/{item}', [PurchaseController::class , 'changeAddress']);
     Route::post('/purchase/address/{item}' ,[PurchaseController::class,'storeAddress']);
     Route::post('/comment/{id}', [CommentController::class,'store']);
+    Route::get('/charge/{item}', [StripeController::class,'index']);
+    Route::post('/charge', [StripeController::class,'charge']);
 });
 Route::get('/item/{item}', [ProductListController::class,'detail']);
 Route::post('/like' ,[ProductListController::class,'like']);
