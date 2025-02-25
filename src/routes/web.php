@@ -32,6 +32,9 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('/purchase/address/{item}' ,[PurchaseController::class,'storeAddress']);
     Route::post('/comment/{id}', [CommentController::class,'store']);
     Route::get('/charge/{item}', [StripeController::class,'index']);
+    Route::post('/conveni', [StripeController::class, 'conveni']);
+    Route::get('/conveni/status/', [StripeController::class, 'status'])->name('conveni/status');
+
     Route::post('/charge', [StripeController::class,'charge']);
 });
 Route::get('/item/{item}', [ProductListController::class,'detail']);

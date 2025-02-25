@@ -274,3 +274,8 @@ html {
   margin: auto;
   background-color: rgba(0, 0, 0, 0.1843137255);
 }
+
+.c-stripe {
+  text-align: center;
+  margin-top: 200px;
+}

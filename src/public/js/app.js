@@ -19312,6 +19312,19 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
+/***/ "./resources/scss/purchase.scss":
+/*!**************************************!*\
+  !*** ./resources/scss/purchase.scss ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/scss/reset.scss":
 /*!***********************************!*\
   !*** ./resources/scss/reset.scss ***!
@@ -19341,6 +19354,19 @@ __webpack_require__.r(__webpack_exports__);
 /***/ "./resources/scss/shipment.scss":
 /*!**************************************!*\
   !*** ./resources/scss/shipment.scss ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/scss/_forward.scss":
+/*!**************************************!*\
+  !*** ./resources/scss/_forward.scss ***!
   \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -19394,19 +19420,6 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./resources/scss/profile.scss ***!
   \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/scss/purchase.scss":
-/*!**************************************!*\
-  !*** ./resources/scss/purchase.scss ***!
-  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19733,13 +19746,14 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
 /******/ 			"css/common": 0,
-/******/ 			"css/purchase": 0,
 /******/ 			"css/profile": 0,
 /******/ 			"css/item-detail": 0,
 /******/ 			"css/auth": 0,
+/******/ 			"css/_forward": 0,
 /******/ 			"css/shipment": 0,
 /******/ 			"css/sell-product": 0,
-/******/ 			"css/reset": 0
+/******/ 			"css/reset": 0,
+/******/ 			"css/purchase": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -19789,15 +19803,16 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/common","css/purchase","css/profile","css/item-detail","css/auth","css/shipment","css/sell-product","css/reset"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/common","css/purchase","css/profile","css/item-detail","css/auth","css/shipment","css/sell-product","css/reset"], () => (__webpack_require__("./resources/scss/auth.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/common","css/purchase","css/profile","css/item-detail","css/auth","css/shipment","css/sell-product","css/reset"], () => (__webpack_require__("./resources/scss/common.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/common","css/purchase","css/profile","css/item-detail","css/auth","css/shipment","css/sell-product","css/reset"], () => (__webpack_require__("./resources/scss/item-detail.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/common","css/purchase","css/profile","css/item-detail","css/auth","css/shipment","css/sell-product","css/reset"], () => (__webpack_require__("./resources/scss/profile.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/common","css/purchase","css/profile","css/item-detail","css/auth","css/shipment","css/sell-product","css/reset"], () => (__webpack_require__("./resources/scss/purchase.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/common","css/purchase","css/profile","css/item-detail","css/auth","css/shipment","css/sell-product","css/reset"], () => (__webpack_require__("./resources/scss/reset.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/common","css/purchase","css/profile","css/item-detail","css/auth","css/shipment","css/sell-product","css/reset"], () => (__webpack_require__("./resources/scss/sell-product.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/common","css/purchase","css/profile","css/item-detail","css/auth","css/shipment","css/sell-product","css/reset"], () => (__webpack_require__("./resources/scss/shipment.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/common","css/profile","css/item-detail","css/auth","css/_forward","css/shipment","css/sell-product","css/reset","css/purchase"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/common","css/profile","css/item-detail","css/auth","css/_forward","css/shipment","css/sell-product","css/reset","css/purchase"], () => (__webpack_require__("./resources/scss/_forward.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/common","css/profile","css/item-detail","css/auth","css/_forward","css/shipment","css/sell-product","css/reset","css/purchase"], () => (__webpack_require__("./resources/scss/auth.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/common","css/profile","css/item-detail","css/auth","css/_forward","css/shipment","css/sell-product","css/reset","css/purchase"], () => (__webpack_require__("./resources/scss/common.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/common","css/profile","css/item-detail","css/auth","css/_forward","css/shipment","css/sell-product","css/reset","css/purchase"], () => (__webpack_require__("./resources/scss/item-detail.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/common","css/profile","css/item-detail","css/auth","css/_forward","css/shipment","css/sell-product","css/reset","css/purchase"], () => (__webpack_require__("./resources/scss/profile.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/common","css/profile","css/item-detail","css/auth","css/_forward","css/shipment","css/sell-product","css/reset","css/purchase"], () => (__webpack_require__("./resources/scss/purchase.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/common","css/profile","css/item-detail","css/auth","css/_forward","css/shipment","css/sell-product","css/reset","css/purchase"], () => (__webpack_require__("./resources/scss/reset.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/common","css/profile","css/item-detail","css/auth","css/_forward","css/shipment","css/sell-product","css/reset","css/purchase"], () => (__webpack_require__("./resources/scss/sell-product.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/common","css/profile","css/item-detail","css/auth","css/_forward","css/shipment","css/sell-product","css/reset","css/purchase"], () => (__webpack_require__("./resources/scss/shipment.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

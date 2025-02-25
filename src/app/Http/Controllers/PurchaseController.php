@@ -55,6 +55,6 @@ class PurchaseController extends Controller
             'is_sold' => true,
         ]);
         session()->forget('order_address');
-        return redirect('/charge/'.$item);
+        return redirect('/charge/'.$item.'?payment='.$payment_request->payment);
     }
 }
