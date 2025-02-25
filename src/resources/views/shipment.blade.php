@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', 'プロフィール設定')
+@section('title', '送付先住所の変更')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/shipment.css') }}">
 @endsection

@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', '商品の出品')
+@section('title', '商品詳細')
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/item-detail.css') }}">
 @endsection
@@ -35,11 +35,13 @@
                     <div class="p-item-detail_icon_count">{{ $product->comments->count() }}</div>
                 </div>
             </div>
+            @if (!$product->is_sold)
             <div class="p-item-detail_buy-btn"><a class="c-button" href="/purchase/{{ $product->id }}">購入手続きへ</a></div>
+            @endif
             <h2 class="p-item-detail_content_title">商品説明</h2>
             <p class="p-item-detail_description">{!! nl2br(e($product->description)) !!}
             </p>
-            <h2 class="p-item-detail_content_title">商品説明</h2>
+            <h2 class="p-item-detail_content_title">商品の情報</h2>
             <div class="p-item-detail_infos">
                 <div class="p-item-detail_info">
                     <h3 class="p-item-detail_info_title">カテゴリー</h3>
@@ -62,7 +64,7 @@
                     @foreach ($product->comments as $comment)
                     <div class="p-item-detail_comment_content">
                         <div class="p-item-detail_comment_user">
-                            <div class="p-item-detail_comment_user_img"><img src="{{ asset('storage/profile/'.$comment->user->image) }}" alt=""></div>
+                            <div class="p-item-detail_comment_user_img"><img src="{{ isset($comment->user->image) ? asset('storage/profile/'.$comment->user->image) : asset('img/dummy.png'); }}" alt=""></div>
                             <p class="p-item-detail_comment_user_name">{{ $comment->user->name }}</p>
                         </div>
                         <p class="p-item-detail_comment_detail">{{ $comment->comment }}</p>

@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', '商品一覧')
+@section('title', 'プロフィール')
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 @endsection

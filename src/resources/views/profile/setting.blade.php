@@ -26,7 +26,7 @@
                 @enderror
                 <div class="c-form_group">
                     <label for="name" class="c-form_label">ユーザー名</label>
-                    <input type="text" id="name" name="name" value="{{ $user->name }}" class="c-form_input">
+                    <input type="text" id="name" name="name" value="{{ old('name') !== null ? old('name') : $user->name }}" class="c-form_input">
                     @error('name')
                     <p class="c-form_error">
                         {{ $message }}
@@ -35,7 +35,7 @@
                 </div>
                 <div class="c-form_group">
                     <label for="postcode" class="c-form_label">郵便番号</label>
-                    <input type="text" id="postcode" name="postcode" class="c-form_input" value="{{ $user->postcode }}">
+                    <input type="text" id="postcode" name="postcode" class="c-form_input" value="{{ old('postcode') !== null ? old('postcode') : $user->postcode }}">
                     @error('postcode')
                     <p class="c-form_error">
                         {{ $message }}
@@ -44,7 +44,7 @@
                 </div>
                 <div class="c-form_group">
                     <label for="address" class="c-form_label">住所</label>
-                    <input type="text" id="address" name="address" value="{{ $user->address }}" class="c-form_input">
+                    <input type="text" id="address" name="address" value="{{ old('address') !== null ? old('address') : $user->address }}" class="c-form_input">
                     @error('address')
                     <p class="c-form_error">
                         {{ $message }}
@@ -53,7 +53,7 @@
                 </div>
                 <div class="c-form_group">
                     <label for="building" class="c-form_label">建物名</label>
-                    <input type="text" id="building" name="building" value="{{ $user->building }}" class="c-form_input">
+                    <input type="text" id="building" name="building" value="{{ old('building') !== null ? old('building') : $user->building }}" class="c-form_input">
                     @error('building')
                     <p class="c-form_error">
                         {{ $message }}

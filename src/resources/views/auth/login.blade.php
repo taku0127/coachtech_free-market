@@ -14,7 +14,7 @@
             <div class="c-form p-auth_content">
                 <div class="c-form_group">
                     <label for="email" class="c-form_label">メールアドレス</label>
-                    <input type="text" id="email" name="email" class="c-form_input">
+                    <input type="text" id="email" name="email" class="c-form_input" value="{{ old('email') }}">
                     @error('email')
                     <p class="c-form_error">
                         {{ $message }}
