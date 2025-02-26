@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,6 +28,13 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // // ログアウト時にメール認証を null にする
+        Event::listen(Logout::class, function ($event) {
+            if ($event->user) {
+                // ログアウトしたユーザーのメール認証日付を null に設定
+                $event->user->email_verified_at = null;
+                $event->user->save();
+            }
+        });
     }
 }
