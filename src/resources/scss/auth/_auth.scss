@@ -1,0 +1,35 @@
+.p-auth {
+    padding: 96px 0;
+    &.--emailVarify {
+        padding: 237px 0;
+        width: 720px;
+        margin: auto;
+    }
+    &.--emailVarify &_title {
+        font-size: 24px;
+    }
+    &_title {
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+    }
+    &_link {
+        font-size: 24px;
+        padding: 22px 33px;
+        background-color: #d9d9d9;
+        border: 1px solid #000;
+        display: inline-block;
+        margin: 62px auto 0;
+        border-radius: 5px;
+        &Block {
+            text-align: center;
+        }
+    }
+    &_content {
+        margin-top: 54px;
+    }
+    &_button {
+        text-align: center;
+        margin-top: 52px;
+    }
+}

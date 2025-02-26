@@ -1,0 +1,174 @@
+@use "forward" as *;
+.p-item-detail {
+    padding: 100px 0;
+    display: flex;
+    @include tabView {
+        display: block;
+    }
+    &_img {
+        width: 50%;
+        padding: 36px 45px 0;
+        @include tabView {
+            width: 100%;
+            padding: 0;
+        }
+        &_wrap {
+            position: relative;
+        }
+        img {
+            width: 100%;
+        }
+    }
+    &_content {
+        width: 50%;
+        padding: 0 60px;
+        @include tabView {
+            width: 100%;
+            padding: 0;
+            margin-top: 20px;
+        }
+    }
+    &_title {
+        font-size: 45px;
+        font-weight: 700;
+        span {
+            font-size: 20px;
+        }
+    }
+    &_price {
+        font-size: 30px;
+        margin-top: 28px;
+        span {
+            font-size: 45px;
+        }
+    }
+    &_icon {
+        text-align: center;
+        &:not(:first-child) {
+            margin-left: 45px;
+        }
+        &s {
+            display: flex;
+            margin: 28px 0 0 45px;
+        }
+        &_count {
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+        &_img {
+            &.--active {
+                filter: brightness(0) saturate(100%) invert(98%) sepia(65%)
+                    saturate(6068%) hue-rotate(360deg) brightness(76%)
+                    contrast(102%);
+            }
+            &.--noClick {
+                pointer-events: none;
+            }
+        }
+    }
+    &_buy-btn {
+        margin-top: 20px;
+    }
+    &_content_title {
+        font-size: 36px;
+        font-weight: 700;
+        margin-top: 40px;
+    }
+    &_description {
+        margin-top: 28px;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    &_info {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        &_title {
+            font-size: 24px;
+            font-weight: 700;
+            width: 158px;
+        }
+        &_content {
+            margin-left: 60px;
+            font-size: 20px;
+            &.--category {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+        &_category {
+            padding: 3px 30px;
+            background-color: #d9d9d9;
+            border-radius: 15px;
+            margin-right: 22px;
+            margin-bottom: 10px;
+        }
+        &_status {
+            padding: 3px 30px;
+        }
+    }
+    &_comment {
+        margin-top: 50px;
+        &_title {
+            font-size: 36px;
+            color: #5f5f5f;
+            font-weight: 700;
+        }
+        &_contents {
+            margin-top: 20px;
+        }
+        &_content {
+            &:not(:first-child) {
+                margin-top: 30px;
+            }
+        }
+        &_user {
+            display: flex;
+            align-items: center;
+            &_img {
+                img {
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 150px;
+                    object-fit: cover;
+                }
+            }
+            &_name {
+                margin-left: 18px;
+                font-size: 30px;
+                font-weight: 700;
+            }
+        }
+        &_detail {
+            font-size: 20px;
+            background-color: #e5e5e5;
+            padding: 30px 15px;
+            margin-top: 19px;
+            border-radius: 5px;
+        }
+        &_input {
+            margin-top: 40px;
+            &_title {
+                font-size: 28px;
+                font-weight: 700;
+            }
+            &_textarea {
+                height: 246px;
+                border: 1px solid #585858;
+                width: 100%;
+                margin-top: 5px;
+                border-radius: 5px;
+                padding: 10px;
+            }
+            &_error {
+                color: #ff0000;
+                font-size: 16px;
+                margin-top: 5px;
+            }
+        }
+        &_submit {
+            margin-top: 40px;
+        }
+    }
+}
