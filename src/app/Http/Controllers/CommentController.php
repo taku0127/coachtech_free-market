@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    //
     public function store(CommentRequest $request,$id){
-
         Comment::create([
             'product_id' => $id,
             'user_id' => Auth::id(),

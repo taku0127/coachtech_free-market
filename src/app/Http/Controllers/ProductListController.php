@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductListController extends Controller
 {
-    //
     public function index(Request $request) {
         $user_id = Auth::check() ? Auth::id() : null;
         if($user_id) {

@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Storage;
 
 class SellController extends Controller
 {
-    //
     public function index(){
         $categories = Category::all();
         $statuses = Status::all();
@@ -37,7 +36,6 @@ class SellController extends Controller
         if($request->has('categories')) {
             $product->categories()->attach($request->categories);
         }
-
         return redirect('/');
     }
 }

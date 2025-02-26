@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
-    //
     public function index(){
         $user = Auth::user();
         if(session()->has('logged_in') && session('logged_in') === true){
@@ -20,16 +19,12 @@ class ProfileController extends Controller
         return view('profile.setting', compact('user'));
     }
 
-
-    // ...
     public function update(ProfileRequest $profile_request , AddressRequest $address_request){
         $user = Auth::user();
         if($profile_request->hasFile('image')){
-
             if($user->image){
                 Storage::delete('public/profile/' . $user->image);
             }
-
             $image_path = $profile_request->file('image')->store('public/profile');
             $image_name = basename($image_path);
         } else {

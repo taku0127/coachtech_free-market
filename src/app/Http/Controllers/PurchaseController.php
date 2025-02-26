@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
-    //
     public function index($item){
         $payment_methods = PaymentMethod::all();
         $product = Product::find($item);
@@ -50,7 +49,6 @@ class PurchaseController extends Controller
             'building' => $address_request->building,
             'payment_method_id' => $payment_request->payment,
         ]);
-
         Product::find($item)->update([
             'is_sold' => true,
         ]);

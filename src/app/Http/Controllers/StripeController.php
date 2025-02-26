@@ -10,7 +10,6 @@ use Stripe\Stripe;
 
 class StripeController extends Controller
 {
-    //
     public function index($item){
         $product = Product::find($item);
         return view('stripe',compact('product'));
@@ -45,9 +44,7 @@ class StripeController extends Controller
         {
             $id = $request->query('id');
             Stripe::setApiKey(env('STRIPE_SECRET'));
-
             $paymentIntent = \Stripe\PaymentIntent::retrieve($id);
-
             return view('status', ['paymentIntent' => $paymentIntent]);
         }
 }
