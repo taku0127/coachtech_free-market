@@ -1,0 +1,11 @@
+.p-shipment {
+  margin-top: 48px;
+}
+.p-shipment_title {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+}
+.p-shipment_content {
+  margin-top: 103px;
+}
