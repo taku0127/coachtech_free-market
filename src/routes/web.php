@@ -34,8 +34,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/charge/{item}', [StripeController::class,'index']);
     Route::post('/conveni', [StripeController::class, 'conveni']);
     Route::get('/conveni/status/', [StripeController::class, 'status'])->name('conveni/status');
-
     Route::post('/charge', [StripeController::class,'charge']);
+    Route::post('/like' ,[ProductListController::class,'like']);
 });
 Route::get('/item/{item}', [ProductListController::class,'detail']);
-Route::post('/like' ,[ProductListController::class,'like']);
