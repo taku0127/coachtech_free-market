@@ -19,18 +19,18 @@ class SellController extends Controller
     }
 
     public function store(SellRequest $request){
-        $user_id = Auth::id();
+        $userId = Auth::id();
         if($request->hasFile('image')){
-            $image_path = $request->file('image')->store('public/products');
-            $image_name = basename($image_path);
+            $imagePath = $request->file('image')->store('public/products');
+            $imageName = basename($imagePath);
         }
         $product = Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'brand' => $request->brand,
-            'image' => $image_name,
+            'image' => $imageName,
             'price' => $request->price,
-            'user_id' => $user_id,
+            'user_id' => $userId,
             'status_id' => $request->status,
         ]);
         if($request->has('categories')) {

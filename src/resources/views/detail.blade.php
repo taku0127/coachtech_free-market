@@ -22,7 +22,7 @@
                     <form action="/like" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <button class="p-item-detail_icon_img{{ $is_like ? ' --active' : '' }}{{ Auth::check() ? '' : ' --noClick' }}">
+                        <button class="p-item-detail_icon_img{{ $isLike ? ' --active' : '' }}{{ Auth::check() ? '' : ' --noClick' }}">
                             <img src="{{ asset('img/icon-star.png') }}" alt="">
                         </button>
                     </form>

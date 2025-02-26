@@ -9,7 +9,7 @@
         <h1 class="p-shipment_title">
             住所の変更
         </h1>
-        <form action="/purchase/address/{{ $product_id }}" method="POST">
+        <form action="/purchase/address/{{ $productId }}" method="POST">
             @csrf
             <div class="c-form p-shipment_content">
                 <div class="c-form_group">

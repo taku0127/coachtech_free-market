@@ -11,57 +11,57 @@ use Illuminate\Support\Facades\Auth;
 class ProductListController extends Controller
 {
     public function index(Request $request) {
-        $user_id = Auth::check() ? Auth::id() : null;
-        if($user_id) {
-            $user = User::find($user_id);
+        $userId = Auth::check() ? Auth::id() : null;
+        if($userId) {
+            $user = User::find($userId);
         }
-        $query_page = $request->query('page');
-        $query_search = $request->query('search');
-        if($user_id && $user->email_verified_at == null) {
+        $queryPage = $request->query('page');
+        $querySearch = $request->query('search');
+        if($userId && $user->email_verified_at == null) {
             $user->sendEmailVerificationNotification();
             return redirect('/email/verify');
         }
-        $products = Product::when($user_id,function ($query) use($user_id,$query_page){
-            if($query_page == 'mylist'){
-                $query->whereHas('likes',function ($q)use($user_id){
-                    return $q->where('user_id', $user_id);
+        $products = Product::when($userId,function ($query) use($userId,$queryPage){
+            if($queryPage == 'mylist'){
+                $query->whereHas('likes',function ($q)use($userId){
+                    return $q->where('user_id', $userId);
                 });
             }
-            return $query->where('user_id', '!=', $user_id);
-        })->when(!$user_id && $query_page == 'mylist', function($query){
+            return $query->where('user_id', '!=', $userId);
+        })->when(!$userId && $queryPage == 'mylist', function($query){
             return $query->whereRaw('0=1');
-        })->when($query_search,function($query)use($query_search){
-            return $query->KeywordSearch($query_search);
+        })->when($querySearch,function($query)use($querySearch){
+            return $query->KeywordSearch($querySearch);
         })->get();
         return view('index',compact('products'));
     }
 
     public function detail($id) {
-        $user_id = Auth::check() ? Auth::id() : null;
+        $userId = Auth::check() ? Auth::id() : null;
         $product = Product::with(['comments.user','categories'])->find($id);
-        $is_like = $user_id ? $product->likes()->where('user_id' , $user_id)->exists() : false;
-        return view('detail', compact('product','is_like'));
+        $isLike = $userId ? $product->likes()->where('user_id' , $userId)->exists() : false;
+        return view('detail', compact('product','isLike'));
     }
 
     public function like(Request $request){
-        $product_id = $request->input('product_id');
-        $product = Product::find($product_id);
-        $user_id = Auth::id();
-        if(!$product->likes()->where('user_id',$user_id)->exists()){
-            $product->likes()->attach($user_id);
+        $productId = $request->input('product_id');
+        $product = Product::find($productId);
+        $userId = Auth::id();
+        if(!$product->likes()->where('user_id',$userId)->exists()){
+            $product->likes()->attach($userId);
         }else{
-            $product->likes()->detach($user_id);
+            $product->likes()->detach($userId);
         }
-        return redirect('item/'.$product_id);
+        return redirect('item/'.$productId);
     }
 
     public function mypage(Request $request){
-        $query_tab = $request->query('tab');
+        $queryTab = $request->query('tab');
         $user = Auth::user();
         $products = null;
-        if($query_tab == 'sell' || $query_tab == null){
+        if($queryTab == 'sell' || $queryTab == null){
             $products = Product::where('user_id', $user->id)->get();;
-        } elseif($query_tab == 'buy') {
+        } elseif($queryTab == 'buy') {
             $products = Order::where('user_id', $user->id)->with('product')->get()->pluck('product');
         };
         return view('profile.index',compact('products','user'));

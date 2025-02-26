@@ -19,23 +19,23 @@ class ProfileController extends Controller
         return view('profile.setting', compact('user'));
     }
 
-    public function update(ProfileRequest $profile_request , AddressRequest $address_request){
+    public function update(ProfileRequest $profileRequest , AddressRequest $addressRequest){
         $user = Auth::user();
-        if($profile_request->hasFile('image')){
+        if($profileRequest->hasFile('image')){
             if($user->image){
                 Storage::delete('public/profile/' . $user->image);
             }
-            $image_path = $profile_request->file('image')->store('public/profile');
-            $image_name = basename($image_path);
+            $imagePath = $profileRequest->file('image')->store('public/profile');
+            $imageName = basename($imagePath);
         } else {
-            $image_name = $user->image;
+            $imageName = $user->image;
         }
         $user->update([
-            'name' => $address_request->name,
-            'postcode' => $address_request->postcode,
-            'address' => $address_request->address,
-            'building' => $address_request->building,
-            'image' => $image_name,
+            'name' => $addressRequest->name,
+            'postcode' => $addressRequest->postcode,
+            'address' => $addressRequest->address,
+            'building' => $addressRequest->building,
+            'image' => $imageName,
         ]);
         return redirect('/mypage');
     }

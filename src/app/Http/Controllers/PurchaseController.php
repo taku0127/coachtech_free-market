@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class PurchaseController extends Controller
 {
     public function index($item){
-        $payment_methods = PaymentMethod::all();
+        $paymentMethods = PaymentMethod::all();
         $product = Product::find($item);
         $user = Auth::user();
         if(session()->has('order_address')){
@@ -26,12 +26,12 @@ class PurchaseController extends Controller
             ]]);
             $address = session()->get('order_address');
         }
-        return view('purchase',compact('product','address','user','payment_methods'));
+        return view('purchase',compact('product','address','user','paymentMethods'));
     }
 
     public function changeAddress($item){
-        $product_id = $item;
-        return view('shipment',compact('product_id'));
+        $productId = $item;
+        return view('shipment',compact('productId'));
     }
 
     public function storeAddress(AddressRequest $request,$item){
@@ -40,19 +40,19 @@ class PurchaseController extends Controller
         return redirect('/purchase/'.$item);
     }
 
-    public function store(AddressRequest $address_request,PaymentMethodRequest $payment_request,$item){
+    public function store(AddressRequest $addressRequest,PaymentMethodRequest $paymentRequest,$item){
         Order::create([
             'user_id' => Auth::id(),
             'product_id' => $item,
-            'postcode' => $address_request->postcode,
-            'address' => $address_request->address,
-            'building' => $address_request->building,
-            'payment_method_id' => $payment_request->payment,
+            'postcode' => $addressRequest->postcode,
+            'address' => $addressRequest->address,
+            'building' => $addressRequest->building,
+            'payment_method_id' => $paymentRequest->payment,
         ]);
         Product::find($item)->update([
             'is_sold' => true,
         ]);
         session()->forget('order_address');
-        return redirect('/charge/'.$item.'?payment='.$payment_request->payment);
+        return redirect('/charge/'.$item.'?payment='.$paymentRequest->payment);
     }
 }

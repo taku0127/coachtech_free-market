@@ -21,8 +21,8 @@
                     <div class="p-purchase_select-payment_select-wrap">
                         <select name="payment" id="" class="p-purchase_select-payment_select js-selectPayment">
                             <option value="">選択してください</option>
-                            @foreach ($payment_methods as $payment_method)
-                            <option value="{{ $payment_method->id }}">{{ $payment_method->name }}</option>
+                            @foreach ($paymentMethods as $paymentMethod)
+                            <option value="{{ $paymentMethod->id }}">{{ $paymentMethod->name }}</option>
                             @endforeach
                         </select>
                     </div>
