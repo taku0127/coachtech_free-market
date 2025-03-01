@@ -70,6 +70,5 @@ class PurchaseTest extends TestCase
         $response = $this->get('/mypage?tab=buy');
         $response->assertStatus(200);
         $response->assertSeeText($product->name);
-        dd($response->content());
     }
 }
