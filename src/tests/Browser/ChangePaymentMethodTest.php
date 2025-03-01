@@ -18,7 +18,7 @@ class ChangePaymentMethodTest extends DuskTestCase
     {
         parent::setUp();
 
-        // 🌱 シーディングを実行
+        // シーディングを実行
         $this->seed();
     }
     public function testExample()
