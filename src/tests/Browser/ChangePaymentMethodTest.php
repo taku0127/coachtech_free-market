@@ -6,14 +6,22 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ExampleTest extends DuskTestCase
+class ChangePaymentMethodTest extends DuskTestCase
 {
     /**
-     * A basic browser test example.
+     * A Dusk test example.
      *
      * @return void
      */
-    public function testBasicExample()
+    use DatabaseMigrations;
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        // 🌱 シーディングを実行
+        $this->seed();
+    }
+    public function testExample()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
