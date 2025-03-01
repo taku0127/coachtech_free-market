@@ -25,7 +25,14 @@
   3. npm run watch
   4. src/resources/scss/配下で編集
 - テストの実行
-  1. テスト用のenvファイルは .env.testing.example ファイルから.env.testing をコピーしてください。
+  1. docker-compose exec mysql mysql -u root -p
+  2. CREATE DATABASE demo_test;
+  3. テスト用のenvファイルは .env.testing.example ファイルから.env.testing をコピーしてください。
+  4. docker-compose exec php bash
+  5. php artisan key:generate --env=testing
+  6. php artisan config:clear
+  7. php artisan migrate --env=testing
+  8. php artisan test --testsuite=Feature (全テストの実行)
 
 ## 使用技術(実行環境)
 
