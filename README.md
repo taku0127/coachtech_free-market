@@ -24,6 +24,8 @@
   2. npm install
   3. npm run watch
   4. src/resources/scss/配下で編集
+- テストの実行
+  1. テスト用のenvファイルは .env.testing.example ファイルから.env.testing をコピーしてください。
 
 ## 使用技術(実行環境)
 
