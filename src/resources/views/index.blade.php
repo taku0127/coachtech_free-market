@@ -4,7 +4,7 @@
 <div class="c-product">
     <div class="c-product_links">
         <a href="/" class="c-product_link{{ request()->query('page') != 'mylist' ? ' --active' : '' }}">おすすめ</a>
-        <a href="/?page=mylist" class="c-product_link{{ request()->query('page') == 'mylist' ? ' --active' : '' }}">マイリスト</a>
+        <a href="/?page=mylist{{ request()->query('search') ? '&search='.request()->query('search') : '' }}" class="c-product_link{{ request()->query('page') == 'mylist' ? ' --active' : '' }}">マイリスト</a>
     </div>
     <ul class="c-product_lists">
         @foreach ($products as $product)
