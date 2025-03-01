@@ -12,7 +12,7 @@
   2. composer install
   3. .env.example ファイルから.env をコピーし、環境変数を設定
      - DB\_\*を独自の環境変数へ変更
-     - SESSION_DRIVER=cookie に変更想定
+     - SESSION_DRIVER=cookie に変更
      - STRIPE_KEY={stripe の公開鍵}
      - STRIPE_SECRET={stripe の秘密鍵}
   4. php artisan key:generate
@@ -24,6 +24,15 @@
   2. npm install
   3. npm run watch
   4. src/resources/scss/配下で編集
+- テストの実行
+  1. docker-compose exec mysql mysql -u root -p
+  2. CREATE DATABASE demo_test;
+  3. テスト用のenvファイルは .env.testing.example ファイルから.env.testing をコピーしてください。
+  4. docker-compose exec php bash
+  5. php artisan key:generate --env=testing
+  6. php artisan config:clear
+  7. php artisan migrate --env=testing
+  8. php artisan test --testsuite=Feature (全テストの実行)
 
 ## 使用技術(実行環境)
 
