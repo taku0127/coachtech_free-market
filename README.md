@@ -12,7 +12,7 @@
   2. composer install
   3. .env.example ファイルから.env をコピーし、環境変数を設定
      - DB\_\*を独自の環境変数へ変更
-     - SESSION_DRIVER=cookie に変更想定
+     - SESSION_DRIVER=cookie に変更
      - STRIPE_KEY={stripe の公開鍵}
      - STRIPE_SECRET={stripe の秘密鍵}
   4. php artisan key:generate
