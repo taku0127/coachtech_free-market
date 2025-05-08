@@ -248,6 +248,16 @@ html {
             border-bottom: 2px solid #5f5f5f;
             padding: 15px 129px;
         }
+        &_notify {
+            font-size: 24px;
+            color: #fff;
+            background-color: #ff0000;
+            padding: 3px 8px;
+            display: inline-block;
+            margin-left: 5px;
+            border-radius: 10px;
+            line-height: 100%;
+        }
     }
     &_list {
         width: 21%;
@@ -269,6 +279,19 @@ html {
                 width: 100%;
                 object-fit: cover;
                 height: auto;
+            }
+            &_notify {
+                position: absolute;
+                top: 3px;
+                left: 4px;
+                color: #fff;
+                background-color: #ff0000;
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 20px;
             }
             &_sold {
                 font-weight: bold;

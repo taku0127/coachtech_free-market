@@ -245,6 +245,16 @@ html {
   border-bottom: 2px solid #5f5f5f;
   padding: 15px 129px;
 }
+.c-product_link_notify {
+  font-size: 24px;
+  color: #fff;
+  background-color: #ff0000;
+  padding: 3px 8px;
+  display: inline-block;
+  margin-left: 5px;
+  border-radius: 10px;
+  line-height: 100%;
+}
 .c-product_list {
   width: 21%;
   margin-bottom: 76px;
@@ -268,6 +278,19 @@ html {
   -o-object-fit: cover;
      object-fit: cover;
   height: auto;
+}
+.c-product_list_img_notify {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  color: #fff;
+  background-color: #ff0000;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
 }
 .c-product_list_img_sold {
   font-weight: bold;

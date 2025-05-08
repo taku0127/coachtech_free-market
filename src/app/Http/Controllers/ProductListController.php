@@ -59,15 +59,23 @@ class ProductListController extends Controller
         $queryTab = $request->query('tab');
         $user = Auth::user();
         $products = null;
+        $purchasedProducts = Product::whereHas('order', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->with('order.chats')->get();
+        $soldProducts = Product::where('user_id',$user->id)->whereHas('order')->with('order.chats')->get();
+        $inTransaction = $purchasedProducts->merge($soldProducts);
+
         if($queryTab == 'sell' || $queryTab == null){
             $products = Product::where('user_id', $user->id)->get();;
         } elseif($queryTab == 'buy') {
             $products = Order::where('user_id', $user->id)->with('product')->get()->pluck('product');
         } elseif($queryTab == 'in_transaction'){
-            $purchasedProducts  = Order::where('user_id', $user->id)->with('product')->get()->pluck('product');
-            $soldProducts = Product::where('user_id',$user->id)->whereHas('order')->get();
-            $products = $purchasedProducts->merge($soldProducts);
+            $products = $inTransaction;
         };
-        return view('profile.index',compact('products','user'));
+
+        $totalUnread = $inTransaction->reduce(function ($carry, $product) {
+            return $carry + ($product->order->chats->where('is_read', false)->count() ?? 0);
+        }, 0);
+        return view('profile.index',compact('products','totalUnread','user'));
     }
 }
