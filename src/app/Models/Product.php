@@ -26,6 +26,10 @@ class Product extends Model
         return $this->belongsTo(Status::class);
     }
 
+    public function order(){
+        return $this->hasOne(Order::class);
+    }
+
     public function scopeKeywordSearch($query,$keyword) {
         if(!empty($keyword)){
             $query->where('name','like','%'.$keyword.'%');

@@ -63,6 +63,10 @@ class ProductListController extends Controller
             $products = Product::where('user_id', $user->id)->get();;
         } elseif($queryTab == 'buy') {
             $products = Order::where('user_id', $user->id)->with('product')->get()->pluck('product');
+        } elseif($queryTab == 'in_transaction'){
+            $purchasedProducts  = Order::where('user_id', $user->id)->with('product')->get()->pluck('product');
+            $soldProducts = Product::where('user_id',$user->id)->whereHas('order')->get();
+            $products = $purchasedProducts->merge($soldProducts);
         };
         return view('profile.index',compact('products','user'));
     }

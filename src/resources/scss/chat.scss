@@ -1,0 +1,163 @@
+@use "forward" as *;
+.p-chat {
+    display: flex;
+    height: calc(100vh - 69px);
+    &_side {
+        background-color: #868686;
+        width: 259px;
+        padding: 13px 32px;
+        &_title {
+            color: #fff;
+            font-weight: bold;
+            font-size: 30px;
+            text-align: center;
+        }
+        &_list {
+            &s {
+                margin-top: 56px;
+            }
+            &:not(:first-child) {
+                margin-top: 43px;
+            }
+        }
+    }
+    &_main {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    &_head {
+        padding: 13px 41px 13px 37px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid #5f5f5f;
+        &_btn {
+            font-family: Inter;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 100%;
+            color: #fff;
+            padding: 15px 23px;
+            background-color: #ff8282;
+            border-radius: 50px;
+        }
+    }
+    &_title {
+        display: flex;
+        align-items: center;
+        &_img {
+            img {
+                width: 79px;
+                height: 79px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+        &_text {
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 100%;
+            margin-left: 13px;
+        }
+    }
+    &_productInfo {
+        padding: 14px 37px;
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid #5f5f5f;
+        &_img {
+            img {
+                width: 203px;
+                height: 206px;
+                object-fit: cover;
+            }
+        }
+        &_texts {
+            margin-left: 40px;
+        }
+        &_title {
+            font-weight: 700;
+            font-size: 48px;
+        }
+        &_text {
+            font-weight: 400;
+            font-size: 36px;
+            margin-top: 31px;
+        }
+    }
+    &_chat {
+        flex: 1;
+        height: 100%;
+        overflow-y: scroll;
+        padding: 25px;
+        &_userInfo {
+            display: flex;
+            align-items: center;
+            &_img {
+                img {
+                    width: 60px;
+                    height: 60px;
+                    object-fit: cover;
+                }
+            }
+            &_name {
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 100%;
+                margin-left: 24px;
+            }
+        }
+        &_message {
+            min-width: 461px;
+            display: inline-block;
+            padding: 18px;
+            font-size: 20px;
+            background-color: #d9d9d9;
+            border-radius: 4px;
+            margin-top: 10px;
+            text-align: left;
+        }
+        &_content {
+            &.--ownMessage {
+                text-align: right;
+                .p-chat_chat {
+                    &_userInfo {
+                        justify-content: right;
+                        flex-direction: row-reverse;
+                        &_name {
+                            margin: 0 24px 0 0;
+                        }
+                    }
+                }
+            }
+        }
+        &_btn {
+            &:not(:first-child) {
+                margin-left: 27px;
+            }
+            &s {
+                padding: 10px 12px;
+                display: flex;
+                justify-content: right;
+            }
+        }
+    }
+    &_sendBox {
+        display: flex;
+        align-items: center;
+        padding: 10px 27px;
+        input[type="text"] {
+            flex: 1;
+            padding: 10px 19px;
+            font-weight: 700;
+            font-size: 20px;
+            border: 1px solid #5f5f5f;
+            border-radius: 4px;
+            margin-right: 18px;
+        }
+        input[type="image"] {
+            width: 80px;
+        }
+    }
+}

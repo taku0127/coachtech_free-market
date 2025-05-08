@@ -200,6 +200,16 @@ html {
   display: block;
   width: 100%;
 }
+.c-button.--chatSide {
+  font-size: 26px;
+  padding: 5px 0;
+  line-height: 100%;
+  display: block;
+  text-align: center;
+  background-color: #eeefeb;
+  font-weight: 400;
+  color: #000;
+}
 
 .c-link {
   color: #0073cc;

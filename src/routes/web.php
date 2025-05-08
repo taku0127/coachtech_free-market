@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProfileController;
@@ -36,5 +37,6 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/conveni/status/', [StripeController::class, 'status'])->name('conveni/status');
     Route::post('/charge', [StripeController::class,'charge']);
     Route::post('/like' ,[ProductListController::class,'like']);
+    Route::get('/transaction_chat/{id}' ,[ChatController::class,'index']);
 });
 Route::get('/item/{item}', [ProductListController::class,'detail']);
