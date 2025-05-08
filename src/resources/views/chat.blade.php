@@ -4,63 +4,62 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
 @endsection
+@php
+    $isSeller = $user->id == $product->user->id;
+    $opponent = $isSeller ? $product->order->user : $product->user;
+@endphp
 <div class="p-chat">
     <aside class="p-chat_side">
         <h2 class="p-chat_side_title">その他の取引</h2>
         <ul class="p-chat_side_lists">
+            @foreach ($otherTransactions as $otherTransaction)
             <li class="p-chat_side_list">
-                <a href="" class="c-button --chatSide">商品名</a>
+                <a href="/transaction_chat/{{$otherTransaction->id}}" class="c-button --chatSide">{{$otherTransaction->name}}
+                    @if ($otherTransaction->order->chats->where('is_read', false)->count() > 0)
+                        <span class="p-chat_side_list_notify">{{$otherTransaction->order->chats->where('is_read', false)->count();}}</span>
+                    @endif
+            </a>
             </li>
-            <li class="p-chat_side_list">
-                <a href="" class="c-button --chatSide">商品名</a>
-            </li>
+            @endforeach
         </ul>
     </aside>
     <section class="p-chat_main">
         <div class="p-chat_head">
             <div class="p-chat_title">
-                <div class="p-chat_title_img"><img src="" alt=""></div>
-                <p class="p-chat_title_text">「ユーザー名」さんとの取引画面</p>
+                <div class="p-chat_title_img"><img src="{{
+                    isset($opponent->image) ? asset('storage/profile/'.$opponent->image) : asset('img/dummy.png')}}" alt=""></div>
+                <p class="p-chat_title_text">{{ $opponent->name; }}さんとの取引画面</p>
             </div>
+            @if (!$isSeller)
             <p class="p-chat_head_btn">取引を完了する</p>
+            @endif
         </div>
         <div class="p-chat_productInfo">
-            <div class="p-chat_productInfo_img"><img src="" alt=""></div>
+            <div class="p-chat_productInfo_img"><img src="{{ asset('storage/products/'.$product->image) }}" alt=""></div>
             <div class="p-chat_productInfo_texts">
-                <h2 class="p-chat_productInfo_title">商品名</h2>
-                <p class="p-chat_productInfo_text">商品価格</p>
+                <h2 class="p-chat_productInfo_title">{{ $product->name }}</h2>
+                <p class="p-chat_productInfo_text">¥<span>{{ number_format($product->price) }}</span> (税込)</p>
             </div>
         </div>
         <div class="p-chat_chat">
-            <div class="p-chat_chat_content">
-                <div class="p-chat_chat_userInfo">
-                    <div class="p-chat_chat_userInfo_img"><img src="" alt=""></div>
-                    <p class="p-chat_chat_userInfo_name">ユーザー名</p>
+            @foreach ($product->order->chats as $chat)
+                @php
+                    $isUser = $chat->user->id == $user->id
+                @endphp
+                <div class="p-chat_chat_content{{ $isUser ? ' --ownMessage' : '';}}">
+                    <div class="p-chat_chat_userInfo">
+                        <div class="p-chat_chat_userInfo_img"><img src="{{ isset($chat->user->image) ? asset('storage/profile/'.$chat->user->image) : asset('img/dummy.png')}}" alt=""></div>
+                        <p class="p-chat_chat_userInfo_name">{{$chat->user->name}}</p>
+                    </div>
+                    <p class="p-chat_chat_message">{{ $chat->message }}</p>
+                    @if ($isUser)
+                        <div class="p-chat_chat_btns">
+                            <p class="p-chat_chat_btn">編集</p>
+                            <p class="p-chat_chat_btn">削除</p>
+                        </div>
+                    @endif
                 </div>
-                <p class="p-chat_chat_message">相手のメッセージ</p>
-            </div>
-            <div class="p-chat_chat_content --ownMessage">
-                <div class="p-chat_chat_userInfo">
-                    <div class="p-chat_chat_userInfo_img"><img src="" alt=""></div>
-                    <p class="p-chat_chat_userInfo_name">ユーザー名</p>
-                </div>
-                <p class="p-chat_chat_message">自分が送ったメッセージ</p>
-                <div class="p-chat_chat_btns">
-                    <p class="p-chat_chat_btn">編集</p>
-                    <p class="p-chat_chat_btn">削除</p>
-                </div>
-            </div>
-            <div class="p-chat_chat_content --ownMessage">
-                <div class="p-chat_chat_userInfo">
-                    <div class="p-chat_chat_userInfo_img"><img src="" alt=""></div>
-                    <p class="p-chat_chat_userInfo_name">ユーザー名</p>
-                </div>
-                <p class="p-chat_chat_message">自分が送ったメッセージ</p>
-                <div class="p-chat_chat_btns">
-                    <p class="p-chat_chat_btn">編集</p>
-                    <p class="p-chat_chat_btn">削除</p>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="c-form p-chat_sendBox">
             <input type="text" name="" id="" placeholder="取引メッセージを記入してください">

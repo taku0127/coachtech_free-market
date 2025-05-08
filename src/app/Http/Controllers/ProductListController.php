@@ -63,7 +63,9 @@ class ProductListController extends Controller
             $query->where('user_id', $user->id);
         })->with('order.chats')->get();
         $soldProducts = Product::where('user_id',$user->id)->whereHas('order')->with('order.chats')->get();
-        $inTransaction = $purchasedProducts->merge($soldProducts);
+        $inTransaction = $purchasedProducts->merge($soldProducts)->sortByDesc(function ($product) {
+            return optional($product->order->chats)->max('created_at');
+        })->values();
 
         if($queryTab == 'sell' || $queryTab == null){
             $products = Product::where('user_id', $user->id)->get();;
