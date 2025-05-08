@@ -28,7 +28,7 @@ class AddUniqueConstraintToPaymentMethodsTable extends Migration
     {
         Schema::table('payment_methods', function (Blueprint $table) {
             //
-            $table->dropUnique('name');
+            // $table->dropUnique('name');
         });
     }
 }

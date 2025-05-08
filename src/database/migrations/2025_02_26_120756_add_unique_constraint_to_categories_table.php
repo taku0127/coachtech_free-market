@@ -29,7 +29,7 @@ class AddUniqueConstraintToCategoriesTable extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             //
-            $table->dropUnique('name');
+            // $table->dropUnique('name');
         });
     }
 }
