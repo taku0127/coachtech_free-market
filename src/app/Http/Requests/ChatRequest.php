@@ -29,7 +29,7 @@ class ChatRequest extends FormRequest
         ];
     }
 
-    public function message(){
+    public function messages(){
         return [
             'message.required' => '本文を入力してください',
             'message.max' => '本文は400文字以内で入力してください',

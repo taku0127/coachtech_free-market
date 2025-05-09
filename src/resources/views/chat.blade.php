@@ -74,7 +74,7 @@
                 </div>
             @endforeach
         </div>
-        <form action="{{ route('transaction_chat',['id' => $product->id ]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('transaction_chat',['id' => $product->id ]) }}" method="POST" enctype="multipart/form-data" class="js-sendMessage">
             @csrf
             <div class="c-form">
                 @if ($errors->any())
@@ -86,9 +86,12 @@
                 @endif
                 <div class="p-chat_sendBox">
                     <input class="js-chatImput" type="text" name="message" id="" placeholder="取引メッセージを記入してください" value="{{ old('message') }}">
-                    <label class="c-form_input-img --product">画像を選択する
-                        <input type="file" name="image" accept="image/*">
-                    </label>
+                    <div class="">
+                        <label class="c-form_input-img --product">画像を選択する
+                            <input class="js-file" type="file" name="image" accept="image/*">
+                        </label>
+                        <p class="js-fileName"></p>
+                    </div>
                     <input type="image" src="{{ asset('img/icon-send.jpg') }}" alt="">
                 </div>
             </div>

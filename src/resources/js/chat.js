@@ -1,5 +1,8 @@
 window.onload = function () {
+    // メッセージの保存
     inputSession();
+    // 画像名表示
+    outputImgName();
 };
 
 function inputSession() {
@@ -20,7 +23,19 @@ function inputSession() {
     }
 
     // 送信時に削除
-    document.querySelector("form")?.addEventListener("submit", () => {
-        sessionStorage.removeItem(storageKey);
+    document
+        .querySelector(".js-sendMessage")
+        ?.addEventListener("submit", () => {
+            sessionStorage.removeItem(storageKey);
+        });
+}
+
+function outputImgName() {
+    const input = document.querySelector(".js-file");
+    const output = document.querySelector(".js-fileName");
+    // 画像名取得
+    input.addEventListener("change", () => {
+        // 出力
+        output.textContent = "画像名:" + input.files[0].name;
     });
 }

@@ -3,7 +3,10 @@
   !*** ./resources/js/chat.js ***!
   \******************************/
 window.onload = function () {
+  // メッセージの保存
   inputSession();
+  // 画像名表示
+  outputImgName();
 };
 function inputSession() {
   var _document$querySelect;
@@ -23,8 +26,17 @@ function inputSession() {
   }
 
   // 送信時に削除
-  (_document$querySelect = document.querySelector("form")) === null || _document$querySelect === void 0 || _document$querySelect.addEventListener("submit", function () {
+  (_document$querySelect = document.querySelector(".js-sendMessage")) === null || _document$querySelect === void 0 || _document$querySelect.addEventListener("submit", function () {
     sessionStorage.removeItem(storageKey);
+  });
+}
+function outputImgName() {
+  var input = document.querySelector(".js-file");
+  var output = document.querySelector(".js-fileName");
+  // 画像名取得
+  input.addEventListener("change", function () {
+    // 出力
+    output.textContent = "画像名:" + input.files[0].name;
   });
 }
 /******/ })()
