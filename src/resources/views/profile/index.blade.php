@@ -23,10 +23,10 @@
             <li class="c-product_list">
                 @php
                     $baseUrl = request()->query('tab') === 'in_transaction'
-                        ? '/transaction_chat/'
-                        : '/item/';
+                        ? route('transaction_chat', ['id' => $product->id])
+                        : '/item/'.$product->id;
                 @endphp
-                <a href="{{ $baseUrl.$product->id }}">
+                <a href="{{ $baseUrl }}">
                     <div class="c-product_list_img">
                         @if (request()->query('tab') === 'in_transaction' && $product->order->chats->where('is_read', false)->count() > 0)
                             <span class="c-product_list_img_notify">{{$product->order->chats->where('is_read', false)->count();}}</span>

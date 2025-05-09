@@ -14,7 +14,7 @@
         <ul class="p-chat_side_lists">
             @foreach ($otherTransactions as $otherTransaction)
             <li class="p-chat_side_list">
-                <a href="/transaction_chat/{{$otherTransaction->id}}" class="c-button --chatSide">{{$otherTransaction->name}}
+                <a href="{{route('transaction_chat', ['id' => $otherTransaction->id])}}" class="c-button --chatSide">{{$otherTransaction->name}}
                     @if ($otherTransaction->order->chats->where('is_read', false)->count() > 0)
                         <span class="p-chat_side_list_notify">{{$otherTransaction->order->chats->where('is_read', false)->count();}}</span>
                     @endif

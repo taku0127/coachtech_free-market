@@ -24,6 +24,11 @@ class ChatController extends Controller
             return optional($product->order->chats)->max('created_at');
         })->values();
 
+        //関係ない人はアクセスできない。
+        if (is_null($product->order) || $user->id !== $product->user_id && $user->id !== optional($product->order)->user_id) {
+            abort(403, 'このチャットにはアクセスできません。');
+        }
+
         return view('chat',compact('product','otherTransactions','user'));
     }
 }

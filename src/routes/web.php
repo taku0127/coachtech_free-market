@@ -37,6 +37,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/conveni/status/', [StripeController::class, 'status'])->name('conveni/status');
     Route::post('/charge', [StripeController::class,'charge']);
     Route::post('/like' ,[ProductListController::class,'like']);
-    Route::get('/transaction_chat/{id}' ,[ChatController::class,'index']);
+    Route::get('/transaction_chat/{id}' ,[ChatController::class,'index'])->name('transaction_chat');
+    Route::post('/transaction_chat/{id}' ,[ChatController::class,'index']);
 });
 Route::get('/item/{item}', [ProductListController::class,'detail']);
