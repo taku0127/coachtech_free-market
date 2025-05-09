@@ -47,7 +47,7 @@ class ChatController extends Controller
             'order_id' => $product->order->id,
             'user_id' => $userId,
             'message' => $request->message,
-            'image_url' => $imageName,
+            'image_url' => $imageName ?? null,
         ]);
         // 画面更新
         return redirect()->back();
