@@ -28,7 +28,7 @@ class ChatsTableSeeder extends Seeder
                     'order_id' => $order->id,
                     'user_id' => $order->user_id,
                     'message' => 'テスト'.self::$count++,
-                    'image_url' => $faker->randomElement(['HDD+Hard+Disk.jpg','Armani+Mens+Clock.jpg','']),
+                    'image_url' => $faker->randomElement(['HDD+Hard+Disk.jpg','Armani+Mens+Clock.jpg',null]),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ],
@@ -36,7 +36,7 @@ class ChatsTableSeeder extends Seeder
                     'order_id' => $order->id,
                     'user_id' => $order->product->user_id,
                     'message' => 'テスト'.self::$count++,
-                    'image_url' => $faker->randomElement(['HDD+Hard+Disk.jpg','Armani+Mens+Clock.jpg','']),
+                    'image_url' => $faker->randomElement(['HDD+Hard+Disk.jpg','Armani+Mens+Clock.jpg',null]),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ]],
