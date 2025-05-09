@@ -13,9 +13,11 @@ function inputSession() {
 
     const input = document.querySelector(".js-chatImput");
     // パスごとにセッションを保存
-    input.addEventListener("input", () => {
-        sessionStorage.setItem(storageKey, input.value);
-    });
+    if (input) {
+        input.addEventListener("input", () => {
+            sessionStorage.setItem(storageKey, input.value);
+        });
+    }
     // セッションを出力
     const saved = sessionStorage.getItem(storageKey);
     if (saved) {

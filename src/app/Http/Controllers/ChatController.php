@@ -53,10 +53,23 @@ class ChatController extends Controller
         return redirect()->back();
     }
 
-    public function destroy(Request $request){
+    public function destroy(Request $request,$id){
         $chat = Chat::find($request->chat_id);
         $chat->delete();
 
-        return redirect()->back();
+        return redirect()->route('transaction_chat',['id' => $id]);
+    }
+
+    public function edit(ChatRequest $request,$id){
+        $chat = Chat::find($request->chat_id);
+        if($request->hasFile('image')){
+            $imagePath = $request->file('image')->store('public/chats');
+            $imageName = basename($imagePath);
+        }
+        $chat->update([
+            'message' => $request->message,
+            'image_url' => $imageName ?? null,
+        ]);
+        return redirect()->route('transaction_chat',['id' => $id]);
     }
 }

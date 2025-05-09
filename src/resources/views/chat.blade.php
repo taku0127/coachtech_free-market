@@ -62,8 +62,8 @@
                     @endif
                     @if ($isUser)
                         <div class="p-chat_chat_btns">
-                            <p class="p-chat_chat_btn">編集</p>
-                            <form action="{{ route('chat.delete') }}" method="POST">
+                            <p class="p-chat_chat_btn"><a href="{{ route('transaction_chat' , ['id' => $product->id , 'edit' => $chat->id]) }}">編集</a></p>
+                            <form action="{{ route('chat.delete',['id' => $product->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="chat_id" value="{{ $chat->id }}" >
@@ -74,8 +74,16 @@
                 </div>
             @endforeach
         </div>
-        <form action="{{ route('transaction_chat',['id' => $product->id ]) }}" method="POST" enctype="multipart/form-data" class="js-sendMessage">
+        <form action="{{request()->has('edit') ? route('chat.edit',['id' => $product->id ]) : route('transaction_chat',['id' => $product->id ]) }}" method="POST" enctype="multipart/form-data" class="js-sendMessage">
             @csrf
+            @if (request()->has('edit'))
+                @php
+                    $chatId = request()->query('edit');
+                    $selectedChat = $product->order->chats->firstWhere('id', $chatId);
+                @endphp
+                @method('patch')
+                <input type="hidden" name="chat_id" value="{{ $chatId }}">
+            @endif
             <div class="c-form">
                 @if ($errors->any())
                     <ul class="p-chat_errors">
@@ -85,8 +93,12 @@
                     </ul>
                 @endif
                 <div class="p-chat_sendBox">
-                    <input class="js-chatImput" type="text" name="message" id="" placeholder="取引メッセージを記入してください" value="{{ old('message') }}">
-                    <div class="">
+                    @if (request()->has('edit'))
+                        <input type="text" name="message" placeholder="取引メッセージを記入してください" value="{{ old('message') ?? $selectedChat->message }}">
+                    @else
+                        <input class="js-chatImput" type="text" name="message" placeholder="取引メッセージを記入してください" value="{{ old('message') }}">
+                    @endif
+                    <div>
                         <label class="c-form_input-img --product">画像を選択する
                             <input class="js-file" type="file" name="image" accept="image/*">
                         </label>

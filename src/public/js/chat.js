@@ -16,9 +16,11 @@ function inputSession() {
   var storageKey = "chatDraft-".concat(productId);
   var input = document.querySelector(".js-chatImput");
   // パスごとにセッションを保存
-  input.addEventListener("input", function () {
-    sessionStorage.setItem(storageKey, input.value);
-  });
+  if (input) {
+    input.addEventListener("input", function () {
+      sessionStorage.setItem(storageKey, input.value);
+    });
+  }
   // セッションを出力
   var saved = sessionStorage.getItem(storageKey);
   if (saved) {
