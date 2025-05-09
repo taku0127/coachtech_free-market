@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChatRequest;
+use App\Models\Chat;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,5 +32,24 @@ class ChatController extends Controller
         }
 
         return view('chat',compact('product','otherTransactions','user'));
+    }
+
+    public function store(ChatRequest $request){
+        $userId = Auth::id();
+        $productId = $request->id;
+        $product = Product::with('order')->find($productId);
+        // チャット作成
+        if($request->hasFile('image')){
+            $imagePath = $request->file('image')->store('public/chats');
+            $imageName = basename($imagePath);
+        }
+        Chat::create([
+            'order_id' => $product->order->id,
+            'user_id' => $userId,
+            'message' => $request->message,
+            'image_url' => $imageName,
+        ]);
+        // 画面更新
+        return redirect()->back();
     }
 }

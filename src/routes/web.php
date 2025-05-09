@@ -38,6 +38,6 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('/charge', [StripeController::class,'charge']);
     Route::post('/like' ,[ProductListController::class,'like']);
     Route::get('/transaction_chat/{id}' ,[ChatController::class,'index'])->name('transaction_chat');
-    Route::post('/transaction_chat/{id}' ,[ChatController::class,'index']);
+    Route::post('/transaction_chat/{id}' ,[ChatController::class,'store']);
 });
 Route::get('/item/{item}', [ProductListController::class,'detail']);

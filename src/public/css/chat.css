@@ -165,3 +165,6 @@
 .p-chat_sendBox input[type=image] {
   width: 80px;
 }
+.p-chat_errors {
+  padding: 0 27px;
+}

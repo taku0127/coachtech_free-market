@@ -61,13 +61,25 @@
                 </div>
             @endforeach
         </div>
-        <div class="c-form p-chat_sendBox">
-            <input type="text" name="" id="" placeholder="取引メッセージを記入してください">
-            <label class="c-form_input-img --product">画像を選択する
-                <input type="file" name="image" accept="image/*" class="js-input_img">
-            </label>
-            <input type="image" src="{{ asset('img/icon-send.jpg') }}" alt="">
-        </div>
+        <form action="{{ route('transaction_chat',['id' => $product->id ]) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="c-form">
+                @if ($errors->any())
+                    <ul class="p-chat_errors">
+                        @foreach ($errors->all() as $error)
+                            <li class="c-form_error">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+                <div class="p-chat_sendBox">
+                    <input type="text" name="message" id="" placeholder="取引メッセージを記入してください">
+                    <label class="c-form_input-img --product">画像を選択する
+                        <input type="file" name="image" accept="image/*">
+                    </label>
+                    <input type="image" src="{{ asset('img/icon-send.jpg') }}" alt="">
+                </div>
+            </div>
+        </form>
     </section>
 </div>
 @endsection
