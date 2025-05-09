@@ -63,7 +63,12 @@
                     @if ($isUser)
                         <div class="p-chat_chat_btns">
                             <p class="p-chat_chat_btn">編集</p>
-                            <p class="p-chat_chat_btn">削除</p>
+                            <form action="{{ route('chat.delete') }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="chat_id" value="{{ $chat->id }}" >
+                                <button class="p-chat_chat_btn">削除</button>
+                            </form>
                         </div>
                     @endif
                 </div>

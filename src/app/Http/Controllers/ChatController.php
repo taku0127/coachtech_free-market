@@ -52,4 +52,11 @@ class ChatController extends Controller
         // 画面更新
         return redirect()->back();
     }
+
+    public function destroy(Request $request){
+        $chat = Chat::find($request->chat_id);
+        $chat->delete();
+
+        return redirect()->back();
+    }
 }

@@ -39,5 +39,6 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('/like' ,[ProductListController::class,'like']);
     Route::get('/transaction_chat/{id}' ,[ChatController::class,'index'])->name('transaction_chat');
     Route::post('/transaction_chat/{id}' ,[ChatController::class,'store']);
+    Route::delete('/transaction_chat/delete' , [ChatController::class,'destroy'])->name('chat.delete');
 });
 Route::get('/item/{item}', [ProductListController::class,'detail']);
