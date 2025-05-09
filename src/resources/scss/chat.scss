@@ -133,6 +133,9 @@
             text-align: left;
         }
         &_content {
+            &:not(:first-child) {
+                margin-top: 10px;
+            }
             &.--ownMessage {
                 text-align: right;
                 .p-chat_chat {
@@ -142,6 +145,9 @@
                         &_name {
                             margin: 0 24px 0 0;
                         }
+                    }
+                    &_img {
+                        margin: 10px 0 0 auto;
                     }
                 }
             }
@@ -154,6 +160,13 @@
                 padding: 10px 12px;
                 display: flex;
                 justify-content: right;
+            }
+        }
+        &_img {
+            max-width: 100px;
+            margin: 10px auto 0 0;
+            img {
+                max-width: 100%;
             }
         }
     }

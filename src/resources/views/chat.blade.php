@@ -52,6 +52,11 @@
                         <p class="p-chat_chat_userInfo_name">{{$chat->user->name}}</p>
                     </div>
                     <p class="p-chat_chat_message">{{ $chat->message }}</p>
+                    @if (isset($chat->image_url))
+                    <div class="p-chat_chat_img">
+                        <a href="{{asset('storage/chats/'.$chat->image_url)}}"><img src="{{asset('storage/chats/'.$chat->image_url)}}" alt=""></a>
+                    </div>
+                    @endif
                     @if ($isUser)
                         <div class="p-chat_chat_btns">
                             <p class="p-chat_chat_btn">編集</p>

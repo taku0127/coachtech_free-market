@@ -130,6 +130,9 @@
   margin-top: 10px;
   text-align: left;
 }
+.p-chat_chat_content:not(:first-child) {
+  margin-top: 10px;
+}
 .p-chat_chat_content.--ownMessage {
   text-align: right;
 }
@@ -140,6 +143,9 @@
 .p-chat_chat_content.--ownMessage .p-chat_chat_userInfo_name {
   margin: 0 24px 0 0;
 }
+.p-chat_chat_content.--ownMessage .p-chat_chat_img {
+  margin: 10px 0 0 auto;
+}
 .p-chat_chat_btn:not(:first-child) {
   margin-left: 27px;
 }
@@ -147,6 +153,13 @@
   padding: 10px 12px;
   display: flex;
   justify-content: right;
+}
+.p-chat_chat_img {
+  max-width: 100px;
+  margin: 10px auto 0 0;
+}
+.p-chat_chat_img img {
+  max-width: 100%;
 }
 .p-chat_sendBox {
   display: flex;
