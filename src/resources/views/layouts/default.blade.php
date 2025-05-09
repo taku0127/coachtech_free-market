@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
     <script src="{{ asset('js/main.js') }}"></script>
+    @yield('js')
 </head>
 <body>
     <header class="c-header">

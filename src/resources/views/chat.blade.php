@@ -4,6 +4,9 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
 @endsection
+@section('js')
+    <script src="{{ asset('js/chat.js') }}"></script>
+@endsection
 @php
     $isSeller = $user->id == $product->user->id;
     $opponent = $isSeller ? $product->order->user : $product->user;
@@ -77,7 +80,7 @@
                     </ul>
                 @endif
                 <div class="p-chat_sendBox">
-                    <input type="text" name="message" id="" placeholder="取引メッセージを記入してください" value="{{ old('message') }}">
+                    <input class="js-chatImput" type="text" name="message" id="" placeholder="取引メッセージを記入してください" value="{{ old('message') }}">
                     <label class="c-form_input-img --product">画像を選択する
                         <input type="file" name="image" accept="image/*">
                     </label>
