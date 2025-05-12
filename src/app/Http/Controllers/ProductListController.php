@@ -59,10 +59,15 @@ class ProductListController extends Controller
         $queryTab = $request->query('tab');
         $user = Auth::user();
         $products = null;
-        $purchasedProducts = Product::whereHas('order', function ($query) use ($user) {
-            $query->where('user_id', $user->id);
+        // 買った商品のレビューしてないもの
+        $purchasedProducts = Product::whereHas('order', function ($query_order) use ($user) {
+            $query_order->where('user_id', $user->id)->unreviewed($user->id);
         })->with('order.chats')->get();
-        $soldProducts = Product::where('user_id',$user->id)->whereHas('order')->with('order.chats')->get();
+        // 売った商品のレビューしてないもの
+        $soldProducts = Product::where('user_id',$user->id)->whereHas('order', function ($query_order) use ($user){
+            $query_order->unreviewed($user->id);
+        })->with('order.chats')->get();
+        // 取引中商品全て(チャットの新規順)
         $inTransaction = $purchasedProducts->merge($soldProducts)->sortByDesc(function ($product) {
             return optional($product->order->chats)->max('created_at');
         })->values();

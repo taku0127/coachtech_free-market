@@ -17,10 +17,14 @@ class ChatController extends Controller
         $product = Product::with(['order.chats.user','order.user','user'])->find($id);
 
         // その他取引中商品(チャットの新規順)
-        $purchasedProducts = Product::whereHas('order', function ($query) use ($user) {
-            $query->where('user_id', $user->id);
+        // 買った商品のレビューしてないもの
+        $purchasedProducts = Product::whereHas('order', function ($query_order) use ($user) {
+            $query_order->where('user_id', $user->id)->unreviewed($user->id);
         })->with('order.chats')->get();
-        $soldProducts = Product::where('user_id',$user->id)->whereHas('order')->with('order.chats')->get();
+        // 売った商品のレビューしてないもの
+        $soldProducts = Product::where('user_id',$user->id)->whereHas('order', function ($query_order) use ($user){
+            $query_order->unreviewed($user->id);
+        })->with('order.chats')->get();
         $inTransaction = $purchasedProducts->merge($soldProducts);
         $otherTransactions = $inTransaction->filter(function ($item) use ($product) {
             return $item->id !== $product->id;
