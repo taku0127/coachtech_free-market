@@ -18,6 +18,22 @@
             justify-content: space-between;
             margin-top: 78px;
         }
+        &_content {
+            margin-left: 27px;
+        }
+        &_reviewStar {
+            &s {
+                display: flex;
+                margin-top: 20px;
+            }
+            width: 40px;
+            &:not(:first-child) {
+                margin-left: 5px;
+            }
+            img {
+                width: 100%;
+            }
+        }
         &_info {
             display: flex;
             align-items: center;
@@ -35,7 +51,7 @@
             }
         }
         &_name {
-            margin-left: 60px;
+            margin-left: 33px;
             font-size: 36px;
             font-weight: 700;
         }

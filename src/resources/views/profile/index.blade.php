@@ -8,7 +8,16 @@
     <div class="p-profile-index_contents">
         <div class="p-profile-index_info">
             <div class="p-profile-index_img"><img src="{{ isset($user->image) ? asset('storage/profile/'.$user->image) : asset('img/dummy.png')}}" alt=""></div>
-            <p class="p-profile-index_name">{{ $user->name }}</p>
+            <div class="p-profile-index_content">
+                <p class="p-profile-index_name">{{ $user->name }}</p>
+                @if ($reviewAve)
+                <ul class="p-profile-index_reviewStars">
+                    @for ($i = 1; $i <= 5; $i++)
+                        <li class="p-profile-index_reviewStar"><img src="{{ $reviewAve >= $i ? asset('img/icon-star_active.svg') : asset('img/icon-star_nonactive.svg') }}" alt=""></li>
+                    @endfor
+                </ul>
+                @endif
+            </div>
         </div>
         <a href="/mypage/profile" class="p-profile-index_link">プロフィールを編集</a>
     </div>

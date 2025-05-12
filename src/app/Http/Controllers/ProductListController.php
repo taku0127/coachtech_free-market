@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -83,6 +84,9 @@ class ProductListController extends Controller
         $totalUnread = $inTransaction->reduce(function ($carry, $product) {
             return $carry + ($product->order->chats->where('is_read', false)->count() ?? 0);
         }, 0);
-        return view('profile.index',compact('products','totalUnread','user'));
+
+        $reviewAve = round(Review::where('reviewee_id', $user->id)->avg('rating'));
+
+        return view('profile.index',compact('products','totalUnread','user', 'reviewAve'));
     }
 }
