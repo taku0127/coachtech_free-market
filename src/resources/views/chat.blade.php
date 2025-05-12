@@ -34,7 +34,7 @@
                 <p class="p-chat_title_text">{{ $opponent->name; }}さんとの取引画面</p>
             </div>
             @if (!$isSeller)
-            <p class="p-chat_head_btn">取引を完了する</p>
+            <p class="p-chat_head_btn js-modalStart">取引を完了する</p>
             @endif
         </div>
         <div class="p-chat_productInfo">
@@ -108,6 +108,24 @@
                 </div>
             </div>
         </form>
+        <div class="js-modalMain p-chat_review {{ $isReviewed && $isSeller ? 'is-active' : '' }}">
+            <form action="{{ route('chat.review',['id' => $product->id]) }}" method="POST">
+                @csrf
+                <div class="p-chat_review_title">取引が完了しました。</div>
+                <div class="p-chat_review_content">
+                    <p class="p-chat_review_content_text">今回の取引相手はどうでしたか？</p>
+                    <ul class="p-chat_stars js-reviewStars">
+                        <li class="p-chat_star" data-review="1"><img src="{{ asset('img/icon-star_active.svg') }}" alt=""></li>
+                        <li class="p-chat_star" data-review="2"><img src="{{ asset('img/icon-star_active.svg') }}" alt=""></li>
+                        <li class="p-chat_star" data-review="3"><img src="{{ asset('img/icon-star_active.svg') }}" alt=""></li>
+                        <li class="p-chat_star" data-review="4"><img src="{{ asset('img/icon-star_nonactive.svg') }}" alt=""></li>
+                        <li class="p-chat_star" data-review="5"><img src="{{ asset('img/icon-star_nonactive.svg') }}" alt=""></li>
+                    </ul>
+                    <input type="hidden" name="rating" class="p-chat_review_number js-reviewInput" value="3">
+                </div>
+                <div class="p-chat_review_btnBox"><button class="c-button --review">送信する</button></div>
+            </form>
+        </div>
     </section>
 </div>
 @endsection

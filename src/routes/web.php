@@ -41,5 +41,6 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('/transaction_chat/{id}' ,[ChatController::class,'store']);
     Route::delete('/transaction_chat/{id}/delete' , [ChatController::class,'destroy'])->name('chat.delete');
     Route::patch('/transaction_chat/{id}/edit', [ChatController::class, 'edit'])->name('chat.edit');
+    Route::post('/transcation_chat/{id}/review',[ChatController::class,'review'])->name('chat.review');
 });
 Route::get('/item/{item}', [ProductListController::class,'detail']);

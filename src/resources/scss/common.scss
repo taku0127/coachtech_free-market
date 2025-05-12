@@ -212,6 +212,11 @@ html {
         font-weight: 400;
         color: #000;
     }
+    &.--review {
+        background-color: #ff8282;
+        width: auto;
+        margin-left: auto;
+    }
 }
 
 .c-link {
@@ -314,4 +319,11 @@ html {
 .c-stripe {
     text-align: center;
     margin-top: 200px;
+}
+
+.js-modalMain {
+    display: none;
+    &.is-active {
+        display: block;
+    }
 }

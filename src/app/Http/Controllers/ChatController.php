@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ChatRequest;
 use App\Models\Chat;
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +15,7 @@ class ChatController extends Controller
         $user = Auth::user();
         // 商品情報とチャット情報
         $product = Product::with(['order.chats.user','order.user','user'])->find($id);
+
         // その他取引中商品(チャットの新規順)
         $purchasedProducts = Product::whereHas('order', function ($query) use ($user) {
             $query->where('user_id', $user->id);
@@ -26,12 +28,15 @@ class ChatController extends Controller
             return optional($product->order->chats)->max('created_at');
         })->values();
 
+        // 購入者にレビューされたかどうか
+        $isReviewed = Review::where('order_id', $product->order->id)->where('reviewer_id', $product->order->user_id)->exists();
+
         //関係ない人はアクセスできない。
         if (is_null($product->order) || $user->id !== $product->user_id && $user->id !== optional($product->order)->user_id) {
             abort(403, 'このチャットにはアクセスできません。');
         }
 
-        return view('chat',compact('product','otherTransactions','user'));
+        return view('chat',compact('product','otherTransactions','user','isReviewed'));
     }
 
     public function store(ChatRequest $request){
@@ -72,4 +77,18 @@ class ChatController extends Controller
         ]);
         return redirect()->route('transaction_chat',['id' => $id]);
     }
+
+    public function review(Request $request,$id){
+        $product = Product::with('order')->find($id);
+        $userId = Auth::id();
+        // レビュー登録
+        Review::create([
+            'order_id' => $product->order->id,
+            'reviewer_id' => $userId,
+            'reviewee_id' => $userId === $product->user_id ? $product->order->user_id : $product->user_id,
+            'rating' => $request->rating,
+        ]);
+        // トップページへ遷移
+        return redirect('/');
+        }
 }

@@ -210,6 +210,11 @@ html {
   font-weight: 400;
   color: #000;
 }
+.c-button.--review {
+  background-color: #ff8282;
+  width: auto;
+  margin-left: auto;
+}
 
 .c-link {
   color: #0073cc;
@@ -311,4 +316,11 @@ html {
 .c-stripe {
   text-align: center;
   margin-top: 200px;
+}
+
+.js-modalMain {
+  display: none;
+}
+.js-modalMain.is-active {
+  display: block;
 }

@@ -3,7 +3,48 @@ window.onload = function () {
     inputSession();
     // 画像名表示
     outputImgName();
+    // モーダル
+    modal();
+    // レビュー用スター制御
+    reviewStar();
 };
+
+function reviewStar() {
+    // 要素取得
+    let stars = document.querySelector(".js-reviewStars").children;
+    stars = [...stars];
+    const input = document.querySelector(".js-reviewInput");
+    stars.forEach((star) => {
+        // クリックしたら
+        star.addEventListener("click", () => {
+            // データ取得
+            const value = parseInt(star.getAttribute("data-review"));
+            // それ以前の物も色を変える
+            stars.forEach((star, index) => {
+                const img = star.querySelector("img");
+                if (index < value) {
+                    img.src = img.src.replace("_nonactive", "_active");
+                } else {
+                    img.src = img.src.replace("_active", "_nonactive");
+                }
+            });
+            // valueに反映する。
+            input.value = value;
+        });
+    });
+}
+
+function modal() {
+    // データ取得
+    const modalBtn = document.querySelector(".js-modalStart");
+    const modalMain = document.querySelector(".js-modalMain");
+    // クリックしたらモーダル出力
+    if (modalBtn) {
+        modalBtn.addEventListener("click", () => {
+            modalMain.classList.add("is-active");
+        });
+    }
+}
 
 function inputSession() {
     // パス名を取得
