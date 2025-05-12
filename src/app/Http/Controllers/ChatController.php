@@ -6,6 +6,7 @@ use App\Http\Requests\ChatRequest;
 use App\Models\Chat;
 use App\Models\Product;
 use App\Models\Review;
+use App\Notifications\TransactionCompleted;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -102,6 +103,13 @@ class ChatController extends Controller
             'reviewee_id' => $userId === $product->user_id ? $product->order->user_id : $product->user_id,
             'rating' => $request->rating,
         ]);
+
+        // 出品者にメール送付
+        $seller = $product->user;
+        if($seller->id !== $userId){
+            $seller->notify(new TransactionCompleted($product->order));
+        }
+
         // トップページへ遷移
         return redirect('/');
         }
