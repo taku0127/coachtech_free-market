@@ -40,6 +40,16 @@ class ChatController extends Controller
             abort(403, 'このチャットにはアクセスできません。');
         }
 
+        // チャットを表示したら自分宛未読分を既読にする
+        $chatsOpponent = $product->order->chats->filter(function($chat) use($user) {
+            return $chat->user_id !== $user->id;
+        });
+        foreach ($chatsOpponent as $chatOppoent) {
+            $chatOppoent->update([
+                'is_read' => true,
+            ]);
+        }
+
         return view('chat',compact('product','otherTransactions','user','isReviewed'));
     }
 

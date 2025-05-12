@@ -39,4 +39,8 @@ class Product extends Model
             $query->where('name','like','%'.$keyword.'%');
         }
     }
+
+    public function getUnreadCount($userId){
+        return $this->order ? $this->order->chats()->unread()->recieved($userId)->where('is_read', false)->count() : 0;
+    }
 }

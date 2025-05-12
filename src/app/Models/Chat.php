@@ -17,4 +17,12 @@ class Chat extends Model
     public function order(){
         return $this->belongsTo(Order::class);
     }
+
+    public function scopeRecieved($query,$userId){
+        return $query->where('user_id', '!=' , $userId);
+    }
+
+    public function scopeUnread($query){
+        return $query->where('is_read', false);
+    }
 }

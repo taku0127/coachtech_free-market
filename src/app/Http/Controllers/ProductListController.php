@@ -81,8 +81,8 @@ class ProductListController extends Controller
             $products = $inTransaction;
         };
 
-        $totalUnread = $inTransaction->reduce(function ($carry, $product) {
-            return $carry + ($product->order->chats->where('is_read', false)->count() ?? 0);
+        $totalUnread = $inTransaction->reduce(function ($carry, $product) use($user) {
+            return $carry + ($product->getUnreadCount($user->id) ?? 0);
         }, 0);
 
         $reviewAve = round(Review::where('reviewee_id', $user->id)->avg('rating'));
