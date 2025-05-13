@@ -1,3 +1,4 @@
+@use "forward" as *;
 .p-profile {
     padding: 60px 0;
     &_title {
@@ -61,6 +62,9 @@
             padding: 14px 40px;
             font-size: 26px;
             border-radius: 10px;
+            @include tabView{
+                font-size: 20px;
+            }
         }
     }
 }
