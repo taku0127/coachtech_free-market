@@ -34,6 +34,16 @@
   7. php artisan migrate --env=testing
   8. php artisan test --testsuite=Feature (全テストの実行)
 
+## ダミーテスト用アカウント
+- テスト1
+  - ID:test1@example.com
+  - PW:00000000
+- テスト2
+  - ID:test2@example.com
+  - PW:00000000
+- テスト3
+  - ID:test3@example.com
+  - PW:00000000
 ## 使用技術(実行環境)
 
 - Laravel 8.83
@@ -45,8 +55,7 @@
 
 ## ER 図
 
-![ir drawio](https://github.com/user-attachments/assets/3f01079b-4c5c-4806-9b89-91c72ed96dbb)
-
+![irv2 drawio](https://github.com/user-attachments/assets/59c3a714-35eb-49ed-96db-0d564f503923)
 
 ## URL
 
