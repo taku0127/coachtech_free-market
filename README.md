@@ -8,15 +8,13 @@
   3. make init
      ※MySQL は、OS によって起動しない場合があるのでそれぞれの PC に合わせて docker-compose.yml ファイルを編集してください。
 - Laravel 環境構築
-  1. docker-compose exec php bash
-  2. composer install
-  3. .envファイルの環境変数を設定
+  1. chmod -R 777 ./\*
+  2. .envファイルの環境変数を設定
      - DB\_\*を独自の環境変数へ変更
      - SESSION_DRIVER=cookie に変更
      - STRIPE_KEY={stripe の公開鍵}
      - STRIPE_SECRET={stripe の秘密鍵}
-  4. chmod -R 777 ./\*
-  5. make fresh (DBの設定)
+  3. make fresh (DBの設定)
 - sass の仕様
   1. make npm-watch
   2. src/resources/scss/配下で編集
