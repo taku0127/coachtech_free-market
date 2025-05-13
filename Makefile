@@ -3,7 +3,6 @@ init:
 	docker-compose exec php composer install
 	docker-compose exec php cp .env.example .env
 	docker-compose exec php php artisan key:generate
-	@make fresh
 	docker-compose exec php bash -c "chmod -R 777 storage bootstrap/cache"
 	@make npm-setup
 
