@@ -6,6 +6,7 @@
   background-color: #868686;
   width: 259px;
   padding: 13px 32px;
+  flex-shrink: 0;
 }
 @media screen and (max-width: 850px) {
   .p-chat_side {
@@ -149,6 +150,8 @@
   border-radius: 4px;
   margin-top: 10px;
   text-align: left;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 .p-chat_chat_content:not(:first-child) {
   margin-top: 10px;
