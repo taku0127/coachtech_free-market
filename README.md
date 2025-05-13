@@ -16,6 +16,7 @@
      - STRIPE_KEY={stripe の公開鍵}
      - STRIPE_SECRET={stripe の秘密鍵}
   4. chmod -R 777 ./\*
+  5. make fresh (DBの設定)
 - sass の仕様
   1. make npm-watch
   2. src/resources/scss/配下で編集
