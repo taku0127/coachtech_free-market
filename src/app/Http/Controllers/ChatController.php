@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ChatRequest;
+use App\Http\Requests\ReviewRequest;
 use App\Models\Chat;
 use App\Models\Product;
 use App\Models\Review;
@@ -93,7 +94,7 @@ class ChatController extends Controller
         return redirect()->route('transaction_chat',['id' => $id]);
     }
 
-    public function review(Request $request,$id){
+    public function review(ReviewRequest $request,$id){
         $product = Product::with('order')->find($id);
         $userId = Auth::id();
         // レビュー登録
