@@ -51,6 +51,7 @@ html {
 .c-header_links {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 .c-header_btn {
   background-color: #fff;
