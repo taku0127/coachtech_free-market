@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
     <script src="{{ asset('js/main.js') }}"></script>
+    @yield('js')
 </head>
 <body>
     <header class="c-header">
         <p class="c-header_logo">
             <a href="/"><img src="{{ asset('img/logo.svg') }}" alt=""></a>
         </p>
-        @if (!Request::is('login','register','email/verify'))
+        @if (!Request::is('login','register','email/verify','transaction_chat/*'))
         <div class="c-header_block">
             <form action="/" method="get">
                 @csrf

@@ -43,7 +43,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => $seeder_images[0],
                 'price' => '15000',
                 'is_sold' => false,
-                'user_id' => $users->random()->id,
+                'user_id' => 1,
                 'status_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -55,7 +55,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => $seeder_images[1],
                 'price' => '5000',
                 'is_sold' => false,
-                'user_id' => $users->random()->id,
+                'user_id' => 1,
                 'status_id' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -67,7 +67,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => $seeder_images[2],
                 'price' => '300',
                 'is_sold' => false,
-                'user_id' => $users->random()->id,
+                'user_id' => 1,
                 'status_id' => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -79,7 +79,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => $seeder_images[3],
                 'price' => '4000',
                 'is_sold' => false,
-                'user_id' => $users->random()->id,
+                'user_id' => 1,
                 'status_id' => 4,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -91,7 +91,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => $seeder_images[4],
                 'price' => '45000',
                 'is_sold' => false,
-                'user_id' => $users->random()->id,
+                'user_id' => 1,
                 'status_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -103,7 +103,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => $seeder_images[5],
                 'price' => '8000',
                 'is_sold' => false,
-                'user_id' => $users->random()->id,
+                'user_id' => 2,
                 'status_id' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -115,7 +115,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => $seeder_images[6],
                 'price' => '3500',
                 'is_sold' => false,
-                'user_id' => $users->random()->id,
+                'user_id' => 2,
                 'status_id' => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -127,7 +127,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => $seeder_images[7],
                 'price' => '500',
                 'is_sold' => false,
-                'user_id' => $users->random()->id,
+                'user_id' => 2,
                 'status_id' => 4,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -139,7 +139,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => $seeder_images[8],
                 'price' => '4000',
                 'is_sold' => false,
-                'user_id' => $users->random()->id,
+                'user_id' => 2,
                 'status_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -151,7 +151,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => $seeder_images[9],
                 'price' => '2500',
                 'is_sold' => false,
-                'user_id' => $users->random()->id,
+                'user_id' => 2,
                 'status_id' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

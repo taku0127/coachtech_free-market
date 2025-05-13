@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,11 +60,33 @@ class ProductListController extends Controller
         $queryTab = $request->query('tab');
         $user = Auth::user();
         $products = null;
+        // 買った商品のレビューしてないもの
+        $purchasedProducts = Product::whereHas('order', function ($query_order) use ($user) {
+            $query_order->where('user_id', $user->id)->unreviewed($user->id);
+        })->with('order.chats')->get();
+        // 売った商品のレビューしてないもの
+        $soldProducts = Product::where('user_id',$user->id)->whereHas('order', function ($query_order) use ($user){
+            $query_order->unreviewed($user->id);
+        })->with('order.chats')->get();
+        // 取引中商品全て(チャットの新規順)
+        $inTransaction = $purchasedProducts->merge($soldProducts)->sortByDesc(function ($product) {
+            return optional($product->order->chats)->max('created_at');
+        })->values();
+
         if($queryTab == 'sell' || $queryTab == null){
             $products = Product::where('user_id', $user->id)->get();;
         } elseif($queryTab == 'buy') {
             $products = Order::where('user_id', $user->id)->with('product')->get()->pluck('product');
+        } elseif($queryTab == 'in_transaction'){
+            $products = $inTransaction;
         };
-        return view('profile.index',compact('products','user'));
+
+        $totalUnread = $inTransaction->reduce(function ($carry, $product) use($user) {
+            return $carry + ($product->getUnreadCount($user->id) ?? 0);
+        }, 0);
+
+        $reviewAve = round(Review::where('reviewee_id', $user->id)->avg('rating'));
+
+        return view('profile.index',compact('products','totalUnread','user', 'reviewAve'));
     }
 }

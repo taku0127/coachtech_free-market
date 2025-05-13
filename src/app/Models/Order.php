@@ -20,5 +20,18 @@ class Order extends Model
     public function paymentMethod(){
         return $this->belongsTo(PaymentMethod::class);
     }
+    public function chats(){
+        return $this->hasMany(Chat::class);
+    }
+
+    public function review(){
+        return $this->hasMany(Review::class);
+    }
+
+    public function scopeUnreviewed($query,$userId){
+        return $query->whereDoesntHave('review', function($query_review) use ($userId) {
+            $query_review->fromReviewer($userId);
+        });
+    }
 
 }
