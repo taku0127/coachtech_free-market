@@ -34,7 +34,7 @@
             <div class="p-chat_title">
                 <div class="p-chat_title_img"><img src="{{
                     isset($opponent->image) ? asset('storage/profile/'.$opponent->image) : asset('img/dummy.png')}}" alt=""></div>
-                <p class="p-chat_title_text">{{ $opponent->name; }}さんとの取引画面</p>
+                <h1 class="p-chat_title_text">{{ $opponent->name; }}さんとの取引画面</h1>
             </div>
             @if (!$isSeller)
             <p class="p-chat_head_btn js-modalStart">取引を完了する</p>
