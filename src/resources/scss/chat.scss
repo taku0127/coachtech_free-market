@@ -212,6 +212,9 @@
         background-color: #fdfce6;
         border: 1px solid #000;
         border-radius: 15px;
+        @include tabView {
+            width: 95%;
+        }
         &_title {
             padding: 20px 23px;
             font-weight: 400;
