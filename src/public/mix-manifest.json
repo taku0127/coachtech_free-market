@@ -3,7 +3,6 @@
     "/js/bootstrap.js": "/js/bootstrap.js",
     "/js/chat.js": "/js/chat.js",
     "/js/main.js": "/js/main.js",
-    "/css/common.css": "/css/common.css",
     "/css/item-detail.css": "/css/item-detail.css",
     "/css/chat.css": "/css/chat.css",
     "/css/auth.css": "/css/auth.css",
@@ -12,5 +11,6 @@
     "/css/sell-product.css": "/css/sell-product.css",
     "/css/reset.css": "/css/reset.css",
     "/css/purchase.css": "/css/purchase.css",
-    "/css/profile.css": "/css/profile.css"
+    "/css/profile.css": "/css/profile.css",
+    "/css/common.css": "/css/common.css"
 }
