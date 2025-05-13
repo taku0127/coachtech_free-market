@@ -14,6 +14,10 @@ class Product extends Model
         return $this->belongsToMany(User::class, 'likes');
     }
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
     public function categories(){
         return $this->belongsToMany(Category::class);
     }
@@ -26,9 +30,17 @@ class Product extends Model
         return $this->belongsTo(Status::class);
     }
 
+    public function order(){
+        return $this->hasOne(Order::class);
+    }
+
     public function scopeKeywordSearch($query,$keyword) {
         if(!empty($keyword)){
             $query->where('name','like','%'.$keyword.'%');
         }
+    }
+
+    public function getUnreadCount($userId){
+        return $this->order ? $this->order->chats()->unread()->recieved($userId)->where('is_read', false)->count() : 0;
     }
 }

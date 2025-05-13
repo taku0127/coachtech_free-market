@@ -28,7 +28,7 @@ class AddUniqueConstraintToStatusesTable extends Migration
     {
         Schema::table('statuses', function (Blueprint $table) {
             //
-            $table->dropUnique('name');
+            // $table->dropUnique('name');
         });
     }
 }
